@@ -1,2 +1,2 @@
 # Console-games
-repisotory for console games I have amde in java (eclipse)
+repisotory for console games I have made in java (eclipse)
