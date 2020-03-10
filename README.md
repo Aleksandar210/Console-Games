@@ -1,2 +1,3 @@
-# Console-games
-repisotory for console games I have made in java (eclipse)
+# Console games.
+
+A repisotory which contains games I have coded in java.
