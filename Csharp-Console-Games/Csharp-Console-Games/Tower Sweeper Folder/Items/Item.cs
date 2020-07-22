@@ -8,6 +8,9 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
     {
         //Resources
         StringBuilder sb;
+        private bool isHealingType;
+        private bool isDamageType;
+        private bool isBuffType;
 
         //consts
         private const int DefaultDamage = 0;
@@ -15,6 +18,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
 
         //fields
+        protected string type;           //either damage or jsut healing type
         protected string name;
         protected int damage;
         protected int healthRestore;
@@ -28,12 +32,25 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         {
             this.Damage = DefaultDamage;
             this.ManaCost = DefaultMana;
+            this.isBuffType = false;
+            this.isDamageType = false;
+            this.isHealingType = false;
         }
 
-        protected Item(string name):this()
+        protected Item(string name,string type):this()
         {
             this.sb = new StringBuilder();
             this.Name = name;
+        }
+
+        protected Item(string name,string type,params int[] damageHealthShieldBuff):this(name,type)
+        {
+            switch(damageHealthShieldBuff.Length)
+            {
+                case 1:
+
+                    break;
+            }
         }
 
         //properties
@@ -84,6 +101,16 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                 }
             }
             get { return this.damage; }
+        }
+
+        protected int HealthRestore
+        {
+            private set
+            {
+
+            }
+
+            get { return this.healthRestore; }
         }
 
 

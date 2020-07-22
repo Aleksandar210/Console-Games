@@ -105,6 +105,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                 }
                 else
                 {
+                    
                     this.healthRange = value;
                 }
             }
@@ -115,6 +116,24 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         {
             private set
             {
+
+                switch (this.mana)
+                {
+                    case 0:
+                        this.mana += value;
+                        break;
+                    default:
+                        int neededMana = this.ManaRange - this.mana;
+                        if (value >= neededMana)
+                        {
+                            this.health = this.healthRange;
+                        }
+                        else if (value < neededMana)
+                        {
+                            this.mana+= value;
+                        }
+                        break;
+                }
 
             }
             get { return this.mana; }
@@ -162,13 +181,22 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         }
 
-        public void DecreaseHP()     // if player takes damage
+        public void DecreaseHP(int decreaseBy)     // if player takes damage
         {
-
+            if(this.Health-decreaseBy<=0)
+            {
+                this.Health = 0;
+            }
+            else
+            {
+                this.Health -= decreaseBy;
+            }
+            
         }
 
-        public void IncreaseHP()        // if player uses a potion
+        public void IncreaseHP(int increaseBy)        // if player uses a potion
         {
+            this.Health = increaseBy;
 
         }
 
