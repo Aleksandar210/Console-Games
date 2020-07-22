@@ -1,0 +1,13 @@
+D:\Csharp-Console-Games\Csharp-Console-Games\obj\Debug\netcoreapp3.1\Csharp-Console-Games.csprojAssemblyReference.cache
+D:\Csharp-Console-Games\Csharp-Console-Games\obj\Debug\netcoreapp3.1\Csharp-Console-Games.csproj.CoreCompileInputs.cache
+D:\Csharp-Console-Games\Csharp-Console-Games\obj\Debug\netcoreapp3.1\Csharp-Console-Games.AssemblyInfoInputs.cache
+D:\Csharp-Console-Games\Csharp-Console-Games\obj\Debug\netcoreapp3.1\Csharp-Console-Games.AssemblyInfo.cs
+D:\Csharp-Console-Games\Csharp-Console-Games\bin\Debug\netcoreapp3.1\Csharp-Console-Games.exe
+D:\Csharp-Console-Games\Csharp-Console-Games\bin\Debug\netcoreapp3.1\Csharp-Console-Games.deps.json
+D:\Csharp-Console-Games\Csharp-Console-Games\bin\Debug\netcoreapp3.1\Csharp-Console-Games.runtimeconfig.json
+D:\Csharp-Console-Games\Csharp-Console-Games\bin\Debug\netcoreapp3.1\Csharp-Console-Games.runtimeconfig.dev.json
+D:\Csharp-Console-Games\Csharp-Console-Games\bin\Debug\netcoreapp3.1\Csharp-Console-Games.dll
+D:\Csharp-Console-Games\Csharp-Console-Games\bin\Debug\netcoreapp3.1\Csharp-Console-Games.pdb
+D:\Csharp-Console-Games\Csharp-Console-Games\obj\Debug\netcoreapp3.1\Csharp-Console-Games.dll
+D:\Csharp-Console-Games\Csharp-Console-Games\obj\Debug\netcoreapp3.1\Csharp-Console-Games.pdb
+D:\Csharp-Console-Games\Csharp-Console-Games\obj\Debug\netcoreapp3.1\Csharp-Console-Games.genruntimeconfig.cache
