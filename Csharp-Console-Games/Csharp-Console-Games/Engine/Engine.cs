@@ -14,6 +14,8 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         //consts
         private const int DefaultNumberTowerSweeped = 0;
+        private const int fieldRow = 40;
+        private const int fieldCol = 70;
 
         //fields
         private int numberTowerSweeped;
@@ -22,12 +24,12 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         private char[,] field;
 
         //contructors
-        public Engine(int row, int column)
+        public Engine()
         {
             this.numberTowerSweeped = DefaultNumberTowerSweeped;
-            this.field = new char[row, column];
+            this.field = new char[fieldRow, fieldCol];
             this.sb = new StringBuilder();
-            this.BuildFieldOnStartup(row, column);
+            this.BuildFieldOnStartup();
             
         }
 
@@ -75,7 +77,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         }
 
         //behaviour
-        private void BuildFieldOnStartup(int row,int col)     //updated for random object placements
+        private void BuildFieldOnStartup()     //updated for random object placements
         {
             
             for(int i=0;i<this.field.GetLength(0);i++)
@@ -85,6 +87,36 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                     this.field[i, j] = '.';
                 }
             }
+
+        }
+
+        
+        /// <summary>
+        ///generates coordinates for a tower randomyl and within range
+        /// </summary>
+        /// <param name="numberEnemies"> it uses field prop indirectly </param>
+        /// <returns> array of 2 elements presenting the x and y coordinate </returns>
+        private int[] RandomEnemyCoordinateGenerator(int numberEnemies)
+        {
+
+        }
+
+        /// <summary>
+        /// generates random number presenting the enemies needed to be generated on the field
+        /// </summary>
+        /// <returns> Returns the number of enemies that needs to spawn </returns>
+        private int RandomNumberEnemeyGenerator()
+        {
+
+        }
+
+        private int RandomTowerNumberGenerator()
+        {
+
+        }
+
+        private int RandomTowerCoordinateGenerator(int numberTowers)
+        {
 
         }
 
