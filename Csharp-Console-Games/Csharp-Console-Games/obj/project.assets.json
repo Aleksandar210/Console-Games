@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Csharp-Console-Games\\Csharp-Console-Games\\Csharp-Console-Games.csproj",
+      "projectUniqueName": "D:\\Console-games\\Csharp-Console-Games\\Csharp-Console-Games\\Csharp-Console-Games.csproj",
       "projectName": "Csharp-Console-Games",
-      "projectPath": "D:\\Csharp-Console-Games\\Csharp-Console-Games\\Csharp-Console-Games.csproj",
+      "projectPath": "D:\\Console-games\\Csharp-Console-Games\\Csharp-Console-Games\\Csharp-Console-Games.csproj",
       "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-      "outputPath": "D:\\Csharp-Console-Games\\Csharp-Console-Games\\obj\\",
+      "outputPath": "D:\\Console-games\\Csharp-Console-Games\\Csharp-Console-Games\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
