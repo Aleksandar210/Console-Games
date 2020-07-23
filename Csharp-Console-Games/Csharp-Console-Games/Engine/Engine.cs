@@ -4,6 +4,7 @@ using Csharp_Console_Games.Tower_Sweeper_Folder.Buildings;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace Csharp_Console_Games.Tower_Sweeper_Folder
@@ -13,6 +14,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         //usable resoures
         private readonly StringBuilder sb;
         private HashSet<string> towerCoordiantes;
+        private HashSet<string> enemiesCoordiantes;
 
 
         //consts
@@ -71,7 +73,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
 
         //Room -> inside the towe  //Tower can have multiple floors with rooms 
-        private string Room 
+        private string Room         //thi displays the room inside the tower
         {
             
              set
@@ -105,14 +107,30 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         {
             int numberTowersTheFiledHas = RandomTowerNumberGenerator();
             int numberEnemiesTheFieldHas = RandomNumberEnemeyGenerator();
-            
-            for(int i=0;i<this.field.GetLength(0);i++)
+
+            //adding coordinates of towers on the field     //to do create towers to add in dictioanary as well
+            for (int i = 0; i < numberTowersTheFiledHas; i++)
+            {
+                this.towerCoordiantes.Add(RandomTowerCoordinateGenerator(this.field, this.towerCoordiantes));
+                this
+            }
+
+
+            for (int i=0;i<this.field.GetLength(0);i++)
             {
                 for(int j =0;j<this.field.GetLength(1);j++)
                 {
                     this.field[i, j] = '.';
                 }
             }
+
+            foreach(var item in this.towerCoordiantes)
+            {
+                this.BuildTower(this.field, item.Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                    .Select(int.Parse).ToArray());
+            }
+
+
 
         }
 
@@ -122,9 +140,19 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         /// </summary>
         /// <param name="numberEnemies"> it uses field prop indirectly </param>
         /// <returns> array of 2 elements presenting the x and y coordinate </returns>
-        private int[] RandomEnemyCoordinateGenerator(int numberEnemies)
+        private string RandomEnemyCoordinateGenerator(int numberEnemies,HashSet<string> previousCoordinates
+            ,HashSet<string> previousTowerCoordinates)
         {
-            return new int[2];
+            int[] coordinates = new int[2];
+
+            do
+            {
+                coordinates[0] = RandomNumberGenerator(1, field.GetLength(0) - 1);
+                coordinates[1] = RandomNumberGenerator(0, field.GetLength(1) - 1);
+            } while (coordinates[0] == coordinates[1] && (!previousCoordinates.Contains(coordinates[0] + " " + coordinates[1])
+            && !previousTowerCoordinates.Contains(coordinates[0]+" "+coordinates[1])));
+
+            return coordinates[0] + " " + coordinates[1];
         }
 
         /// <summary>
@@ -172,6 +200,29 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             return current.Next(min, max) % max;
         }
 
+        private  void BuildTower(char[,] field, params int[] coordinates)
+        {
+            //sdies and tops bott draw
+            int counterSides = coordinates[0];
+            int counterTopsBottoms = coordinates[1];
+            for (int i = 0; i < 5; i++)
+            {
+                field[coordinates[0], counterTopsBottoms] = '_';
+                field[coordinates[0] - 4, counterTopsBottoms] = '-';
+                counterTopsBottoms++;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                field[coordinates[0], coordinates[1]] = '|';
+                field[coordinates[0], coordinates[1] + 5] = '|';
+                coordinates[0]--;
+            }
+        }
+
+        private void SpawnEnemies(char[,] field,HashSet<string> previousEnemyCoordinates)
+        {
+            
+        }
 
 
 
