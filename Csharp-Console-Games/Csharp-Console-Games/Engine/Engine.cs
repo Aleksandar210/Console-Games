@@ -23,6 +23,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         //fields
         private int numberTowerSweeped;
         private int numberTowersOnTheField;
+        private int numberEnemiesOnTheField;
         private Player player;
         private Dictionary<string, Enemy> enemiesOnField;
         private Dictionary<string, Tower> towersOnTheField;
@@ -39,7 +40,12 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             this.BuildFieldOnStartup();                                 //execute build field func
             
         }
+        //------------------------------------------------------------------------------------------
 
+
+
+        //PROPERTIES
+        //-------------------------------------------------------------------------------------------
         //properties
         private string Field        //updated for real time rendering such as only partial updated
                                     //this will do for now //Same as for room use back buffer programming 
@@ -83,9 +89,22 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             get { return this.sb.ToString(); }
         }
 
+        private int NumberEnemiesOnTheField => this.enemiesOnField.Count;
+
+        private int NumberTowersOnTheField => this.towersOnTheField.Count;
+
+        //---------------------------------------------------------------------------------
+
+
+
+
+        //BEHAVIOUR
+        //---------------------------------------------------------------------------------
         //behaviour
         private void BuildFieldOnStartup()     //updated for random object placements
         {
+            int numberTowersTheFiledHas = RandomTowerNumberGenerator();
+            int numberEnemiesTheFieldHas = RandomNumberEnemeyGenerator();
             
             for(int i=0;i<this.field.GetLength(0);i++)
             {
@@ -190,6 +209,8 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             Console.WriteLine(this.Field);
         }
 
+
+        //------------------------------------------------------------------------------------------
         
     }
 }
