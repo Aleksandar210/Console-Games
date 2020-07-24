@@ -7,7 +7,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Buildings
    public class Tower
     {
         //resources
-        StringBuilder sb;
+       
 
         //consts 
         private const int DefaultEnemiesCount = 0;
@@ -16,24 +16,22 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Buildings
         //fields
         private string name;
         private Dictionary<int, char[,]> currentFloors;
-        private int enemieCount;
         private int floorCount;
-       //private Dictionary<string, Chest> chestsInTheTower;        //TO DO implement chest class and logic
-        private Dictionary<string, Enemy> enemiesInsideTower;
+       
+        
 
         public Tower(string name):this()
         {
             this.Name = name;
-            this.currentFloors = new Dictionary<int, char[,]>();
-            this.enemieCount = this.RandomNumberGenerator(5,8);     //generates number of enemies
+            
+          
 
         }
 
         public Tower()
         {
-            this.sb = new StringBuilder();
-            this.enemieCount = DefaultEnemiesCount;
-            this.enemiesInsideTower = new Dictionary<string, Enemy>();
+            this.currentFloors = new Dictionary<int, char[,]>();
+            this.floorCount = this.RandomNumberGenerator(5, 7);
         }
 
 
@@ -57,16 +55,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Buildings
         }
 
 
-        private string Floor
-        {
-            set
-            {
-                this.sb.Clear();
-
-            }
-
-            get { return " "; }
-        }
+       
 
 
         //BEHAVIOUR
@@ -75,7 +64,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Buildings
             //generate flor
         private void GenerateFloor()
         {
-
+            //char[,] currentFloor = new char[,];       //generate the floor with object
         }
 
         //Helping Methods
@@ -87,7 +76,8 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Buildings
             return current.Next(min, max) % max;
         }
 
-        private int RandomFloorEnemyCountGenerator()
+        //generates coordinates of enemies on the floor 
+        private string RandomFloorEnemyCoordinatesCountGenerator(char[,] field,HashSet<string> previousCoordinates)
         {
             int[] coordinates = new int[2];
 
