@@ -34,6 +34,8 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         //contructors
         public Engine()
         {
+            this.towerCoordiantes = new HashSet<string>();
+            this.enemiesCoordiantes = new HashSet<string>();
             this.numberTowerSweeped = DefaultNumberTowerSweeped;        //initialise number towers sweeped
             enemiesOnField = new Dictionary<string, Enemy>();           //intialise enemies collection
             towersOnTheField = new Dictionary<string, Tower>();         //initialise towerCoolection
@@ -112,7 +114,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             for (int i = 0; i < numberTowersTheFiledHas; i++)
             {
                 this.towerCoordiantes.Add(RandomTowerCoordinateGenerator(this.field, this.towerCoordiantes));
-                this
+                
             }
 
 
@@ -217,6 +219,9 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                 field[coordinates[0], coordinates[1] + 5] = '|';
                 coordinates[0]--;
             }
+
+            field[coordinates[0], coordinates[1]] = '+';
+            
         }
 
         private void SpawnEnemies(char[,] field,HashSet<string> previousEnemyCoordinates)
