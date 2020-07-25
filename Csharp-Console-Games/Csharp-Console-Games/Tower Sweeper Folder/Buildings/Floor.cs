@@ -75,6 +75,13 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Buildings
             get { return this.sb.ToString(); }
         }
 
+        public bool IsFloorBeaten => this.isFloorBeaten;
+
+        
+        
+
+        
+
 
 
         //BEHAVIOUR

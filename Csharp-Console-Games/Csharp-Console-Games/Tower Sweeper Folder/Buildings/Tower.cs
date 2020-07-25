@@ -65,6 +65,19 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Buildings
             get { return this.currentFloorAt - 1; }
         }
 
+        public bool IsTowerBeaten
+        {
+            set     //implement when to make true
+            {
+
+            }
+
+            get { return this.isTowerBeaten; }
+            
+               
+            
+        }
+
 
        
 
