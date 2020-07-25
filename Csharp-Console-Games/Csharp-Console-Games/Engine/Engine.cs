@@ -29,6 +29,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         private Player player;
         private Dictionary<string, Enemy> enemiesOnField;
         private Dictionary<string, Tower> towersOnTheField;
+        private Tower currentTowerIn;
         private char[,] field;
 
         //contructors
@@ -257,6 +258,37 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                     break;
             }
              
+        }
+
+        public void PlayTowerSepper()
+        {
+            while(this.numberTowerSweeped!=this.numberTowersOnTheField)
+            {
+                this.DisplayFieldOnScreen();        //displays field on screen  refreshes afte player or enemy movements
+                                                    //waits for player movement
+
+            }
+        }
+
+
+        //implement logic  implement past symbol currentSymbol so on
+        private void ControlPlayer()
+        {
+           
+                var ch = Console.ReadKey(false).Key;
+                switch (ch)
+                {
+                    case ConsoleKey.Escape:
+                        
+                        return;
+                    case ConsoleKey.UpArrow:
+                        
+                        break;
+                    case ConsoleKey.DownArrow:
+                        
+                        break;
+                }
+            
         }
 
         public void DisplayFieldOnScreen()
