@@ -12,26 +12,31 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Buildings
         //consts 
         private const int DefaultEnemiesCount = 0;
         private const int DefaultNumberFloors = 0;
+        private const int DefualtCurrentFoorAtValue = 1;
+        private const bool DefaultTowerBeatenValue = false;
 
         //fields
         private string name;
-        private Dictionary<int, char[,]> currentFloors;
+        private Floor[] currentFloors;
         private int floorCount;
+        private int currentFloorAt;
+        private bool isTowerBeaten;
        
         
 
         public Tower(string name):this()
         {
             this.Name = name;
-            
-          
-
+           
         }
 
         public Tower()
         {
-            this.currentFloors = new Dictionary<int, char[,]>();
             this.floorCount = this.RandomNumberGenerator(5, 7);
+            this.currentFloors = new Floor[this.floorCount];
+            this.isTowerBeaten = DefaultTowerBeatenValue;
+            this.currentFloorAt = DefualtCurrentFoorAtValue;
+            this.GenerateFloors();
         }
 
 
@@ -54,6 +59,12 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Buildings
             get { return this.name; }
         }
 
+      
+        private int CurrentFloorAt
+        {
+            get { return this.currentFloorAt - 1; }
+        }
+
 
        
 
@@ -61,10 +72,15 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Buildings
         //BEHAVIOUR
 
 
-            //generate flor
-        private void GenerateFloor()
+            //generate floors and add them to the collection 
+        private void GenerateFloors()
         {
-            //char[,] currentFloor = new char[,];       //generate the floor with object
+           for(int i =0;i<this.floorCount;i++)
+           {
+                this.currentFloors[i] = new Floor(i + 1);
+           }
+
+
         }
 
         //Helping Methods
@@ -76,19 +92,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Buildings
             return current.Next(min, max) % max;
         }
 
-        //generates coordinates of enemies on the floor 
-        private string RandomFloorEnemyCoordinatesCountGenerator(char[,] field,HashSet<string> previousCoordinates)
-        {
-            int[] coordinates = new int[2];
-
-            do
-            {
-                coordinates[0] = RandomNumberGenerator(7, field.GetLength(0) - 2);
-                coordinates[1] = RandomNumberGenerator(1, field.GetLength(1) - 7);
-            } while (coordinates[0] == coordinates[1] && !previousCoordinates.Contains(coordinates[0] + " " + coordinates[1]));
-
-            return coordinates[0] + " " + coordinates[1];
-        }
+       
 
 
     }
