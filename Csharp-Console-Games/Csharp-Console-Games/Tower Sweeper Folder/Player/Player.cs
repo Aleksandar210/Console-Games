@@ -7,6 +7,10 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 {
     public class Player
     {
+        //related to movement
+        private char drawAfterPlayer;
+        
+
         //consts
         private const int DefaultHeathPoints = 100;   //on startup
         private const int DefaultManaPoints = 150;    //on startup
