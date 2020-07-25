@@ -1,28 +1,34 @@
 ﻿using Csharp_Console_Games.Tower_Sweeper_Folder;
 using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
+using System.Transactions;
 
 namespace Csharp_Console_Games.Tower_Sweeper_Folder
 {
     public class Player
     {
         //related to movement
-        private char drawAfterPlayer;
+        private char drawAfterPlayer;           //the symbol behind us when we moved
+        private int[] coordinatesDrawAfter;     //where to draw the symbol after the step
         
 
         //consts
         private const int DefaultHeathPoints = 100;   //on startup
         private const int DefaultManaPoints = 150;    //on startup
+        private const int StartingPositionRowNewGame = 19;
+        private const int StartingPositionColNewGame = 35;
 
         // fields
         private string name;
+        private int[] positonOnField;       //position on the field or in the room
         private int health;
         private int healthRange;
         private int mana;
         private int manaRange;
-        private List<Item> items;  
-        private List<Spell> spells; 
+        private List<Item> items;
+        private Spell[] spells;
         
      
         //constructors
@@ -36,12 +42,16 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         public Player(string name) : this()
         {
             this.Name = name;
+            this.positonOnField = new int[2] { StartingPositionRowNewGame, StartingPositionColNewGame };
+            
         }
 
         public Player()
         {
+            this.drawAfterPlayer = '.';
+            this.coordinatesDrawAfter = new int[2] { this.positonOnField[0],this.positonOnField[1]};
             this.items = new List<Item>();
-            this.spells = new List<Spell>();
+            this.spells = new Spell[4];
             this.Health = DefaultHeathPoints;
             this.Mana = DefaultManaPoints;
         }
@@ -160,9 +170,114 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         }
 
         //behaviour
-        public void Move()          //bind key (means will execute upon presing certain key)
-        {
 
+        private Func<char, char[,],char> DecideDrawAfterWhatToBe = (futureChar, field) =>
+          {
+              switch(futureChar)
+              {
+                  case '.':
+                      return '.';
+                      break;
+                  case 'E':
+                      return '.';
+                      break;
+                  case '_':
+                      return '_';
+                      break;
+                  case '-':
+                      return '-';
+                      break;
+                  case '|':
+                      return '|';
+                      break;
+              }
+
+              return '.';
+          };
+
+        private Func<char, bool> CheckIfItsEntrance = (pos) =>
+          {
+              switch (pos)
+              {
+                  case '+':
+                      return true;
+                      break;
+                  default:
+                      return false;
+                      break;
+              }
+          };
+
+        public void Move(string direction,char[,] theField)          //bind key (means will execute upon presing certain key)
+        {
+            
+            switch(direction.ToLower())     //modfigy for index out of range on the field with try catch
+            {
+                case "forward":
+                    if(this.CheckIfItsEntrance(theField[this.positonOnField[0]+1,this.positonOnField[1]]))
+                    {
+                        //execute entering tower;
+                    }
+                    else
+                    {
+                        this.coordinatesDrawAfter[0] = this.positonOnField[0];
+                        this.coordinatesDrawAfter[1] = this.positonOnField[1];
+                        this.DecideDrawAfterWhatToBe(theField[this.positonOnField[0] - 1, this.positonOnField[1]]
+                            , theField);
+                        this.positonOnField[0]--;
+                       
+                    }
+                    break;
+
+                case "backwards":
+                    if (this.CheckIfItsEntrance(theField[this.positonOnField[0] + 1, this.positonOnField[1]]))
+                    {
+                        //execute entering tower;
+                    }
+                    else
+                    {
+                        this.coordinatesDrawAfter[0] = this.positonOnField[0];
+                        this.coordinatesDrawAfter[1] = this.positonOnField[1];
+                        this.DecideDrawAfterWhatToBe(theField[this.positonOnField[0] + 1, this.positonOnField[1]]
+                            , theField);
+                        this.positonOnField[0]++;
+
+                    }
+
+                    break;
+
+                        case "left":
+                    if (this.CheckIfItsEntrance(theField[this.positonOnField[0] + 1, this.positonOnField[1]]))
+                    {
+                        //execute entering tower;
+                    }
+                    else
+                    {
+                        this.coordinatesDrawAfter[0] = this.positonOnField[0];
+                        this.coordinatesDrawAfter[1] = this.positonOnField[1];
+                        this.DecideDrawAfterWhatToBe(theField[this.positonOnField[0], this.positonOnField[1]-1]
+                            , theField);
+                        this.positonOnField[1]--;
+
+                    }
+                    break;
+
+                case "right":
+                    if (this.CheckIfItsEntrance(theField[this.positonOnField[0] + 1, this.positonOnField[1]]))
+                    {
+                        //execute entering tower;
+                    }
+                    else
+                    {
+                        this.coordinatesDrawAfter[0] = this.positonOnField[0];
+                        this.coordinatesDrawAfter[1] = this.positonOnField[1];
+                        this.DecideDrawAfterWhatToBe(theField[this.positonOnField[0], this.positonOnField[1]+1]
+                            , theField);
+                        this.positonOnField[1]++;
+
+                    }
+                    break;
+            }
         }
 
         public void Attack()        //bind key

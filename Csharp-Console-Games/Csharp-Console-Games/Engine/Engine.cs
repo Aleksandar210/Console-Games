@@ -278,11 +278,11 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                 var ch = Console.ReadKey(false).Key;
                 switch (ch)
                 {
-                    case ConsoleKey.Escape:
+                    case ConsoleKey.LeftArrow:
                         
                         return;
                     case ConsoleKey.UpArrow:
-                        
+                        this.player.Move()
                         break;
                     case ConsoleKey.DownArrow:
                         
