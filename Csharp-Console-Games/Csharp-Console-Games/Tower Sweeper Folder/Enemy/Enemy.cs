@@ -15,11 +15,14 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         private const int DefaultHeathPoints = 100;   //on startup
         private const int DefaultManaPoints = 150;    //on startup
         private const char DefaultVisualSigniture = 'E'; //aways
+        
 
         // fields
         private string name;
         private char visualSignature;
         private char[][] fieldOn;
+        private char startingSymbolOn;
+        private int firstMovement = -1;
         private int health;
         private int healthRange;
         private int mana;
@@ -32,8 +35,11 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         //constructor 
         public Enemy(string name,int x, int y,char[][] field):this()
         {
+            this.RowCoordinate = x;
+            this.ColCoordinate = y;
             this.fieldOn = field;
             this.Name = name;
+            this.DecideStartingSymbol();
 
         }
 
@@ -112,10 +118,64 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         {
             set
             {
-             //if((value<this.fieldOn.Length-3 || value>-1))   
+                this.xCoordinate = value;
             }
+            get { return this.xCoordinate; }
+        }
+
+        private int ColCoordinate
+        {
+            set
+            {
+                this.yCoordinate = value;
+            }
+
+            get { return this.yCoordinate; }
         }
 
 
+        //Behaviour
+
+        private Func<char, char[][], char> DecideDrawAfterWhatToBe = (futureChar, field) =>
+        {
+            switch (futureChar)
+            {
+                case '.':
+                    return '.';
+                    break;
+                case 'E':
+                    return '.';
+                    break;
+                case '_':
+                    return '_';
+                    break;
+                case '-':
+                    return '-';
+                    break;
+                case '|':
+                    return '|';
+                    break;
+                case '+':
+                    return '+';
+                    break;
+            }
+
+            return '.';
+        };
+
+        public void Patrol()        //this decides direction and MovementExecutes it 
+        {
+
+        }
+
+        private void Move()         //Linked with patrol
+        {
+
+        }
+
+        private void DecideStartingSymbol()     //on creation
+        {
+            this.startingSymbolOn = this.fieldOn[this.RowCoordinate][this.ColCoordinate];
+        }
     }
 }

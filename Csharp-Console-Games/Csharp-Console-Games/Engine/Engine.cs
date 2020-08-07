@@ -167,7 +167,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             {
                 towerPosition = tc.Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
                 if((enemyCoordinates[0] >= towerPosition[0] || enemyCoordinates[0]>=towerPosition[0]+5)
-                && (enemyCoordinates[1]>=towerPosition[1] && enemyCoordinates[1]<=towerPosition[1]+4))
+                && (enemyCoordinates[1]>=towerPosition[1] && enemyCoordinates[1]<=towerPosition[1]+5))
                 {
                     return true;
                 }
