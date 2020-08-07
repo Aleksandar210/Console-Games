@@ -2,6 +2,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 
@@ -12,9 +14,11 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         //consts
         private const int DefaultHeathPoints = 100;   //on startup
         private const int DefaultManaPoints = 150;    //on startup
+        private const char DefaultVisualSigniture = 'E'; //aways
 
         // fields
         private string name;
+        private char visualSignature;
         private int health;
         private int healthRange;
         private int mana;
@@ -25,6 +29,14 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         //constructor 
         public Enemy(string name)
         {
+
+        }
+
+        private Enemy()
+        {
+            this.visualSignature = DefaultVisualSigniture;
+            this.items = new List<Item>(10);
+            this.spells = new List<Spell>(3);
 
         }
 
@@ -44,6 +56,51 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             }
 
             get { return this.name; }
+        }
+
+        public int Mana
+        {
+            private set
+            {
+
+                switch (this.mana)
+                {
+                    case 0:
+                        this.mana += value;
+                        break;
+                    default:
+                        int neededMana = this.ManaRange - this.mana;
+                        if (value >= neededMana)
+                        {
+                            this.health = this.healthRange;
+                        }
+                        else if (value < neededMana)
+                        {
+                            this.mana += value;
+                        }
+                        break;
+                }
+
+            }
+
+            get { return this.mana; }
+
+        }
+
+        private int ManaRange
+        {
+            set
+            {
+                if (value <= 0 || value > 700)
+                {
+                    throw new ArgumentException("Invalid mana range [0-700]");
+                }
+                else
+                {
+                    this.manaRange = value;
+                }
+            }
+            get { return this.manaRange; }
         }
 
 

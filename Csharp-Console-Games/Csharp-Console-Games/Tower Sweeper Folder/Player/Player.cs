@@ -153,9 +153,9 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             get { return this.mana; }
         }
 
-        public int ManaRange
+        private int ManaRange
         {
-            private set
+             set
             {
                 if(value<=0 || value>700)
                 {
