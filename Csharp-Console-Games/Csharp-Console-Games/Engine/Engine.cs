@@ -17,6 +17,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         private HashSet<string> towerCoordiantes;
         private HashSet<string> enemiesCoordiantes;
         private HashSet<string> enemyNamesFromFile;
+        private List<string[]> predefinedPlayers;
 
 
         //consts
@@ -42,6 +43,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             this.enemyNamesFromFile = new HashSet<string>();
             this.towerCoordiantes = new HashSet<string>();
             this.enemiesCoordiantes = new HashSet<string>();
+            this.predefinedPlayers = new List<string[]>();
             this.numberTowerSweeped = DefaultNumberTowerSweeped;        //initialise number towers sweeped
             enemiesOnField = new Dictionary<string, Enemy>();           //intialise enemies collection
             towersOnTheField = new Dictionary<string, Tower>();         //initialise towerCoolection
@@ -58,6 +60,10 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         }
 
+        private void AddPreDifinedPlayers() //adds pre defined characters from file to collection
+        {
+
+        }
 
         //PROPERTIES
         //-------------------------------------------------------------------------------------------
