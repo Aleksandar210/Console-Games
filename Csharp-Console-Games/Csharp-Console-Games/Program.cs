@@ -12,7 +12,7 @@ namespace Csharp_Console_Games
     {
         static void Main(string[] args)
         {
-            //TowerSweaper();
+            TowerSweaper();
 
             //experiment with random numbers
             // Console.Write("Enter min range: ");
@@ -26,14 +26,7 @@ namespace Csharp_Console_Games
 
 
 
-            string enterName = null;
-            do
-            {
-                Console.Clear();
-                Console.Write("Enter name: ");
-                enterName = Console.ReadLine();
-            }
-            while (String.IsNullOrWhiteSpace(enterName));
+            
         }
 
        

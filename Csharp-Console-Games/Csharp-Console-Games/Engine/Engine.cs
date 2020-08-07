@@ -110,6 +110,10 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                 
             }
 
+            for(int i=0;i<numberEnemiesTheFieldHas;i++)
+            {
+                this.enemiesCoordiantes.Add(this.RandomEnemyCoordinateGenerator(this.enemiesCoordiantes,this.towerCoordiantes));
+            }
 
             for (int i=0;i<this.field.Length;i++)
             {
@@ -120,19 +124,27 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             {
                 this.BuildTower(this.field, item.Split(" ", StringSplitOptions.RemoveEmptyEntries)
                     .Select(int.Parse).ToArray());
+                //this.towersOnTheField.Add(item,);
             }
 
-
+            int[] tempEnemyCoordiantes;
+            foreach(var item in this.enemiesCoordiantes)
+            {
+                tempEnemyCoordiantes = item.Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                    .Select(int.Parse).ToArray();
+                this.field[tempEnemyCoordiantes[0]][tempEnemyCoordiantes[1]] = 'E';
+            }
 
         }
 
+        
         
         /// <summary>
         ///generates coordinates for a tower randomyl and within range
         /// </summary>
         /// <param name="numberEnemies"> it uses field prop indirectly </param>
         /// <returns> array of 2 elements presenting the x and y coordinate </returns>
-        private string RandomEnemyCoordinateGenerator(int numberEnemies,HashSet<string> previousCoordinates
+        private string RandomEnemyCoordinateGenerator(HashSet<string> previousCoordinates
             ,HashSet<string> previousTowerCoordinates)
         {
             int[] coordinates = new int[2];
@@ -142,9 +154,39 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                 coordinates[0] = RandomNumberGenerator(1, field.Length - 1);
                 coordinates[1] = RandomNumberGenerator(0, 70 - 1);
             } while (coordinates[0] == coordinates[1] && (!previousCoordinates.Contains(coordinates[0] + " " + coordinates[1])
-            && !previousTowerCoordinates.Contains(coordinates[0]+" "+coordinates[1])));
+            && (!previousTowerCoordinates.Contains(coordinates[0]+" "+coordinates[1]) && !this.isEnemySpawnedBetweenTower(coordinates,previousTowerCoordinates))));
 
             return coordinates[0] + " " + coordinates[1];
+        }
+
+        //finish this
+        private bool isEnemySpawnedBetweenTower(int[] enemyCoordinates,HashSet<string> towerCoordinates)
+        {
+            int[] towerPosition=null;
+            HashSet<string> getTowersRowsSame = towerCoordiantes.Where(tc =>
+            {
+                towerPosition = tc.Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
+                if((enemyCoordinates[0] >= towerPosition[0] || enemyCoordinates[0]>=towerPosition[0]+5)
+                && (enemyCoordinates[1]>=towerPosition[1] && enemyCoordinates[1]<=towerPosition[1]+4))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            ).ToHashSet();
+            if(getTowersRowsSame.Count>0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+          
+            
         }
 
         /// <summary>

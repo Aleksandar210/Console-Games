@@ -112,7 +112,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         {
             set
             {
-             if((value<this.fieldOn.Length-3 || value>-1))   
+             //if((value<this.fieldOn.Length-3 || value>-1))   
             }
         }
 
