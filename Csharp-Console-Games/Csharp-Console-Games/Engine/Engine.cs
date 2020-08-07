@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Csharp_Console_Games.Tower_Sweeper_Folder
 {
@@ -30,7 +31,9 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         private Dictionary<string, Enemy> enemiesOnField;
         private Dictionary<string, Tower> towersOnTheField;
         private Tower currentTowerIn;
-        private char[,] field;
+        private char[][] field;
+        private char[][] currentField;      //may be the main field or just the floor field
+        
 
         //contructors
         public Engine()
@@ -40,9 +43,10 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             this.numberTowerSweeped = DefaultNumberTowerSweeped;        //initialise number towers sweeped
             enemiesOnField = new Dictionary<string, Enemy>();           //intialise enemies collection
             towersOnTheField = new Dictionary<string, Tower>();         //initialise towerCoolection
-            this.field = new char[fieldRow, fieldCol];                  //initialise field 2d array
+            this.field = new char[fieldRow][];                         //initialise field 2d array
             this.sb = new StringBuilder();                              //initialise stringBuilder
             this.BuildFieldOnStartup();                                 //execute build field func
+            
             
         }
         //------------------------------------------------------------------------------------------
@@ -55,16 +59,12 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         private string Field        //updated for real time rendering such as only partial updated
                                     //this will do for now //Same as for room use back buffer programming 
         {
-             set
+            set
             {
                 this.sb.Clear();
-                for(int i =0;i<this.field.GetLength(0);i++)
+                for (int i = 0; i < this.field.GetLength(0); i++)
                 {
-                    for(int j=0;j<this.field.GetLength(1);j++)
-                    {
-                        this.sb.Append(this.field[i, j]);
-                    }
-                   this.sb.Append(Environment.NewLine);
+                    this.sb.Append(new String(this.field[i]) + Environment.NewLine);
                 }
             }
             get
@@ -72,26 +72,6 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                 this.Field = "hello world";
                 return this.sb.ToString();
             }
-        }
-
-
-        //Room -> inside the towe  //Tower can have multiple floors with rooms 
-        private string Room         //thi displays the room inside the tower
-        {
-            
-             set
-            {
-                this.sb.Clear();
-                for(int i =0;i<this.field.GetLength(0);i++)
-                {
-                    for(int j=0;j<this.field.GetLength(1);j++)
-                    {
-                        this.sb.Append(this.field[i, j]);
-                    }
-                    sb.Append(Environment.NewLine);
-                }
-            }
-            get { return this.sb.ToString(); }
         }
 
         private int NumberEnemiesOnTheField => this.enemiesOnField.Count;
@@ -119,12 +99,9 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             }
 
 
-            for (int i=0;i<this.field.GetLength(0);i++)
+            for (int i=0;i<this.field.Length;i++)
             {
-                for(int j =0;j<this.field.GetLength(1);j++)
-                {
-                    this.field[i, j] = '.';
-                }
+                this.field[i] = new String('.',70).ToCharArray();
             }
 
             foreach(var item in this.towerCoordiantes)
@@ -184,14 +161,14 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         /// <param name="field"></param>
         /// <param name="previousCoordinates"></param>
         /// <returns> returns a string of x and y coordinate of tower which si added to the collection hashset</returns>
-        private string RandomTowerCoordinateGenerator(char[,]field,HashSet<string> previousCoordinates)
+        private string RandomTowerCoordinateGenerator(char[][]field,HashSet<string> previousCoordinates)
         {
             int[] coordinates = new int[2];
 
             do
             {
-                coordinates[0] = RandomNumberGenerator(7, field.GetLength(0) - 2);
-                coordinates[1] = RandomNumberGenerator(1, field.GetLength(1) - 7);
+                coordinates[0] = RandomNumberGenerator(7, field.Length - 2);
+                coordinates[1] = RandomNumberGenerator(1, 70 - 7);
             } while (coordinates[0] == coordinates[1] && !previousCoordinates.Contains(coordinates[0] + " " + coordinates[1]));
 
             return coordinates[0] + " " + coordinates[1];
@@ -203,25 +180,25 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             return current.Next(min, max) % max;
         }
 
-        private  void BuildTower(char[,] field, params int[] coordinates)
+        private  void BuildTower(char[][] field, params int[] coordinates)
         {
             //sdies and tops bott draw
             int counterSides = coordinates[0];
             int counterTopsBottoms = coordinates[1];
             for (int i = 0; i < 5; i++)
             {
-                field[coordinates[0], counterTopsBottoms] = '_';
-                field[coordinates[0] - 4, counterTopsBottoms] = '-';
+                field[coordinates[0]][counterTopsBottoms] = '_';
+                field[coordinates[0] - 4][counterTopsBottoms] = '-';
                 counterTopsBottoms++;
             }
             for (int i = 0; i < 5; i++)
             {
-                field[coordinates[0], coordinates[1]] = '|';
-                field[coordinates[0], coordinates[1] + 5] = '|';
+                field[coordinates[0]][coordinates[1]] = '|';
+                field[coordinates[0]][coordinates[1] + 5] = '|';
                 coordinates[0]--;
             }
 
-            field[coordinates[0], coordinates[1]] = '+';
+            field[coordinates[0]][coordinates[1]] = '+';
             
         }
 
@@ -251,7 +228,16 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             switch(select)
             {
                 case 1:
-
+                    do
+                    {
+                        this.sb.Clear();
+                        this.sb.Append("1| Create Character" + Environment.NewLine);
+                        this.sb.Append("2| Chose pre difined character" + Environment.NewLine);
+                        this.sb.Append("3| Back" + Environment.NewLine);
+                        this.sb.Append("Select: ");
+                        select = int.Parse(Console.ReadLine());
+                    } while (select < 1 || select > 3);
+                   
                     break;
                 case 2:
 
@@ -270,6 +256,59 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             }
         }
 
+        public void CreateCharacter()
+        {
+            Regex nameRegex = new Regex(@"[A-Z][a-z]+ [A-Z][a-z]+");
+            Match foundValidName;
+            do        
+            {
+                Console.Clear();
+                Console.Write("Enter Name: ");
+                foundValidName = nameRegex.Match(Console.ReadLine());
+                if(!foundValidName.Success)
+                {
+                    Console.Clear();
+                    Console.Write("Enter Name example[Dave Dave]: ");
+                    foundValidName = nameRegex.Match(Console.ReadLine());
+                }
+            }
+            while (!foundValidName.Success);
+            string name = foundValidName.Value;
+
+            int mana = 0;
+            do
+            {
+                Console.Clear();
+                Console.Write("Enter mana: ");
+                mana = int.Parse(Console.ReadLine());
+                if(mana<1 || mana>800)
+                {
+                    Console.Clear();
+                    Console.Write("Enter mana [1-800]: ");
+                    mana = int.Parse(Console.ReadLine());
+                }
+            }
+            while (mana<1 || mana>800);
+
+            int health = 0;
+            do
+            {
+                Console.Clear();
+                Console.Write("Enter health: ");
+                health = int.Parse(Console.ReadLine());
+                if(health<1 || health>800)
+                {
+                    Console.Clear();
+                    Console.Write("Enter health [1-800]: ");
+                    health = int.Parse(Console.ReadLine());
+                }
+            }
+            while (health<1 || health>800);
+            Console.Clear();
+            this.player = new Player(name, mana, health);
+        }
+
+        
 
         //implement logic  implement past symbol currentSymbol so on
         private void ControlPlayer()
@@ -279,15 +318,18 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                 switch (ch)
                 {
                     case ConsoleKey.LeftArrow:
-                        
+                    this.player.Move("left");
                         return;
                     case ConsoleKey.UpArrow:
-                        this.player.Move()
+                    this.player.Move("forward");
                         break;
                     case ConsoleKey.DownArrow:
-                        
+                    this.player.Move("backward");
                         break;
-                }
+                case ConsoleKey.RightArrow:
+                    this.player.Move("right");
+                    break;
+            }
             
         }
 

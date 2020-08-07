@@ -20,7 +20,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Buildings
         //field
         private bool isFloorBeaten;
         private int floorCount;
-        private char[,] floorField;
+        private char[][] floorField;
         private Dictionary<string, Enemy> currentEnemeisOnFloor;
         //private Dictionary<string, Chest> currentChestsOnFloor;
         private int[,] floorExit;
@@ -37,7 +37,8 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Buildings
         private Floor()
         {
             //generate the floor rows and columns
-            this.floorField = new char[RandomNumberGenerator(11,18),RandomNumberGenerator(14,17)];
+            int width = RandomNumberGenerator(14, 17);
+            this.floorField = new char[RandomNumberGenerator(11,18)][];
 
             //initialise  fields
             this.currentEnemeisOnFloor = new Dictionary<string, Enemy>();
@@ -52,7 +53,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Buildings
         
 
             //Spawn Enemies,Chests,Prepare Floor field
-            this.CreateFloor();     //creates floor and spawns chests and enemies;
+            this.CreateFloor(width);     //creates floor and spawns chests and enemies;
         }
 
 
@@ -64,11 +65,8 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Buildings
                 this.sb.Clear();
                 for(int i =0;i<this.floorField.GetLength(0);i++)
                 {
-                    for(int j=0;j<this.floorField.GetLength(1);j++)
-                    {
-                        this.sb.Append(this.floorField[i, j]);
-                    }
-                    this.sb.Append(Environment.NewLine);
+                    this.sb.Append(new String(this.floorField[i]) + Environment.NewLine);
+                    
                 }
             }
 
@@ -87,14 +85,11 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Buildings
         //BEHAVIOUR
 
         //create floor on startup
-        private void CreateFloor()
+        private void CreateFloor(int widthLength)
         {
-            for(int i =0;i<this.floorField.GetLength(0);i++)
+            for(int i =0;i<this.floorField.Length;i++)
             {
-                for(int j =0;j<this.floorField.GetLength(1);j++)
-                {
-                    this.floorField[i, j] = '.';
-                }
+                this.floorField[i] = new String('.', widthLength).ToCharArray();
 
             }
             this.AddExitAndNextOnFloor();
@@ -111,8 +106,8 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Buildings
 
         private void AddExitAndNextOnFloor()
         {
-            this.floorField[0, 0] = '+';
-            this.floorField[this.floorField.GetLength(0) - 1, 0] = '-';
+            this.floorField[0][0] = '+';
+            this.floorField[this.floorField.Length - 1][ 0] = '-';
         }
 
         private void SpawnEnemiesOnFloor()      //implement
@@ -123,12 +118,12 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Buildings
             {
                 getCoordinatesFromString = item.Split(" ", StringSplitOptions.RemoveEmptyEntries)
                     .Select(int.Parse).ToArray();
-                this.floorField[getCoordinatesFromString[0], getCoordinatesFromString[1]] = 'E';
+                this.floorField[getCoordinatesFromString[0]][getCoordinatesFromString[1]] = 'E';
             }
 
         }
 
-        private void GenerateEnemyCoordinates()     //MODIFIY TO WORK WITH OBJECT ENEMY
+        private void GenerateEnemyCoordinates()     //MODIFIY TO WORK WITH OBJECT ENEMY IN THE COLLECTION
         {
             int numberEnemies = GenerateNumberEnemies();
 
@@ -154,7 +149,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Buildings
             return RandomNumberGenerator(4, 7);
         }
 
-        private void SpawnChestsIfNeeded()      //implement
+        private void SpawnChestsIfNeeded()      //implement chest calss and functionality
         {
             int numberChests = this.GenerateNumberChestsOnField();
             switch(numberChests)
@@ -181,7 +176,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Buildings
                     {
                         chestCoordinatesTransformed = item.Split(" ", StringSplitOptions.RemoveEmptyEntries)
                             .Select(int.Parse).ToArray();
-                        this.floorField[chestCoordinatesTransformed[0], chestCoordinatesTransformed[1]] = '$';      // make it like the towers
+                        this.floorField[chestCoordinatesTransformed[0]][chestCoordinatesTransformed[1]] = '$';      // make it like the towers
 
 
                     }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Runtime.ExceptionServices;
 using System.Text;
 
@@ -23,8 +24,7 @@ namespace Csharp_Console_Games
             //    Console.WriteLine(GenerateRandomNumber(1, max));
             // }
 
-            
-
+           
 
 
         }

@@ -29,7 +29,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         private int manaRange;
         private List<Item> items;
         private Spell[] spells;
-        
+        private char[][] playerEnvironement;
      
         //constructors
         public Player(string name,int mana,int health):this(name)
@@ -169,9 +169,11 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             get { return this.manaRange; }
         }
 
+        public char[][] PlayerEnvironment => this.playerEnvironement;
+       
         //behaviour
 
-        private Func<char, char[,],char> DecideDrawAfterWhatToBe = (futureChar, field) =>
+        private Func<char, char[][],char> DecideDrawAfterWhatToBe = (futureChar, field) =>
           {
               switch(futureChar)
               {
@@ -208,13 +210,13 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
               }
           };
 
-        public void Move(string direction,char[,] theField)          //bind key (means will execute upon presing certain key)
+        public void Move(string direction)          //bind key (means will execute upon presing certain key)
         {
             
             switch(direction.ToLower())     //modfigy for index out of range on the field with try catch
             {
                 case "forward":
-                    if(this.CheckIfItsEntrance(theField[this.positonOnField[0]+1,this.positonOnField[1]]))
+                    if(this.CheckIfItsEntrance(playerEnvironement[this.positonOnField[0]+1][this.positonOnField[1]]))
                     {
                         //execute entering tower;
                     }
@@ -222,15 +224,15 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                     {
                         this.coordinatesDrawAfter[0] = this.positonOnField[0];
                         this.coordinatesDrawAfter[1] = this.positonOnField[1];
-                        this.DecideDrawAfterWhatToBe(theField[this.positonOnField[0] - 1, this.positonOnField[1]]
-                            , theField);
+                        this.DecideDrawAfterWhatToBe(playerEnvironement[this.positonOnField[0] - 1][ this.positonOnField[1]]
+                            , playerEnvironement);
                         this.positonOnField[0]--;
                        
                     }
                     break;
 
-                case "backwards":
-                    if (this.CheckIfItsEntrance(theField[this.positonOnField[0] + 1, this.positonOnField[1]]))
+                case "backward":
+                    if (this.CheckIfItsEntrance(playerEnvironement[this.positonOnField[0] + 1][this.positonOnField[1]]))
                     {
                         //execute entering tower;
                     }
@@ -238,8 +240,8 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                     {
                         this.coordinatesDrawAfter[0] = this.positonOnField[0];
                         this.coordinatesDrawAfter[1] = this.positonOnField[1];
-                        this.DecideDrawAfterWhatToBe(theField[this.positonOnField[0] + 1, this.positonOnField[1]]
-                            , theField);
+                        this.DecideDrawAfterWhatToBe(playerEnvironement[this.positonOnField[0] + 1][this.positonOnField[1]]
+                            , playerEnvironement);
                         this.positonOnField[0]++;
 
                     }
@@ -247,7 +249,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                     break;
 
                         case "left":
-                    if (this.CheckIfItsEntrance(theField[this.positonOnField[0] + 1, this.positonOnField[1]]))
+                    if (this.CheckIfItsEntrance(playerEnvironement[this.positonOnField[0] + 1][this.positonOnField[1]]))
                     {
                         //execute entering tower;
                     }
@@ -255,15 +257,15 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                     {
                         this.coordinatesDrawAfter[0] = this.positonOnField[0];
                         this.coordinatesDrawAfter[1] = this.positonOnField[1];
-                        this.DecideDrawAfterWhatToBe(theField[this.positonOnField[0], this.positonOnField[1]-1]
-                            , theField);
+                        this.DecideDrawAfterWhatToBe(playerEnvironement[this.positonOnField[0]][this.positonOnField[1]-1]
+                            , playerEnvironement);
                         this.positonOnField[1]--;
 
                     }
                     break;
 
                 case "right":
-                    if (this.CheckIfItsEntrance(theField[this.positonOnField[0] + 1, this.positonOnField[1]]))
+                    if (this.CheckIfItsEntrance(playerEnvironement[this.positonOnField[0] + 1][this.positonOnField[1]]))
                     {
                         //execute entering tower;
                     }
@@ -271,8 +273,8 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                     {
                         this.coordinatesDrawAfter[0] = this.positonOnField[0];
                         this.coordinatesDrawAfter[1] = this.positonOnField[1];
-                        this.DecideDrawAfterWhatToBe(theField[this.positonOnField[0], this.positonOnField[1]+1]
-                            , theField);
+                        this.DecideDrawAfterWhatToBe(playerEnvironement[this.positonOnField[0]][this.positonOnField[1]+1]
+                            , playerEnvironement);
                         this.positonOnField[1]++;
 
                     }
@@ -317,6 +319,11 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         {
             this.Health = increaseBy;
 
+        }
+
+        public void UpdatePlayerEnvironement(char[][] currentSurroundings)
+        {
+            this.playerEnvironement = currentSurroundings;
         }
 
     }
