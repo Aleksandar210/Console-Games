@@ -21,7 +21,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         private string name;
         private char visualSignature;
         private char[][] fieldOn;
-        private char startingSymbolOn;
+        private char currentSymbolOn;
         private int firstMovement = -1;
         private int health;
         private int healthRange;
@@ -39,7 +39,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             this.ColCoordinate = y;
             this.fieldOn = field;
             this.Name = name;
-            this.DecideStartingSymbol();
+            this.DecideStartingCurrentSymbol();
 
         }
 
@@ -173,9 +173,9 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         }
 
-        private void DecideStartingSymbol()     //on creation
+        private void DecideStartingCurrentSymbol()     //on creation
         {
-            this.startingSymbolOn = this.fieldOn[this.RowCoordinate][this.ColCoordinate];
+            this.currentSymbolOn= this.fieldOn[this.RowCoordinate][this.ColCoordinate];
         }
     }
 }
