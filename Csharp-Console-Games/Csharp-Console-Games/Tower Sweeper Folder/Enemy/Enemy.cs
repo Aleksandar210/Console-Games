@@ -133,6 +133,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             get { return this.yCoordinate; }
         }
 
+        public char VisualiseOnField => 'E';
 
         //Behaviour
 

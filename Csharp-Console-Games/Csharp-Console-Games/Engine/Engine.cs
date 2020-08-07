@@ -65,6 +65,11 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         }
 
+        private void AddTowerNames()
+        {
+
+        }
+
         //PROPERTIES
         //-------------------------------------------------------------------------------------------
         //properties
@@ -132,7 +137,8 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             {
                 tempEnemyCoordiantes = item.Split(" ", StringSplitOptions.RemoveEmptyEntries)
                     .Select(int.Parse).ToArray();
-                this.field[tempEnemyCoordiantes[0]][tempEnemyCoordiantes[1]] = 'E';
+                this.enemiesOnField.Add(item, new Enemy("Alex", tempEnemyCoordiantes[0], tempEnemyCoordiantes[1], this.field));
+                this.field[tempEnemyCoordiantes[0]][tempEnemyCoordiantes[1]] = this.enemiesOnField[item].VisualiseOnField;
             }
 
         }
@@ -256,7 +262,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             
         }
 
-        private void SpawnEnemies(char[,] field,HashSet<string> previousEnemyCoordinates)
+        private void SpawnEnemies(char[][] field,HashSet<string> previousEnemyCoordinates)
         {
             
         }
