@@ -19,16 +19,21 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         // fields
         private string name;
         private char visualSignature;
+        private char[][] fieldOn;
         private int health;
         private int healthRange;
         private int mana;
         private int manaRange;
+        private int xCoordinate;
+        private int yCoordinate;
         private List<Item> items;   
         private List<Spell> spells;
 
         //constructor 
-        public Enemy(string name)
+        public Enemy(string name,int x, int y,char[][] field):this()
         {
+            this.fieldOn = field;
+            this.Name = name;
 
         }
 
@@ -101,6 +106,14 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                 }
             }
             get { return this.manaRange; }
+        }
+
+        private int RowCoordinate
+        {
+            set
+            {
+             if((value<this.fieldOn.Length-3 || value>-1))   
+            }
         }
 
 

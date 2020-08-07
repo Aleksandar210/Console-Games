@@ -139,8 +139,8 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
             do
             {
-                coordinates[0] = RandomNumberGenerator(1, field.GetLength(0) - 1);
-                coordinates[1] = RandomNumberGenerator(0, field.GetLength(1) - 1);
+                coordinates[0] = RandomNumberGenerator(1, field.Length - 1);
+                coordinates[1] = RandomNumberGenerator(0, 70 - 1);
             } while (coordinates[0] == coordinates[1] && (!previousCoordinates.Contains(coordinates[0] + " " + coordinates[1])
             && !previousTowerCoordinates.Contains(coordinates[0]+" "+coordinates[1])));
 
