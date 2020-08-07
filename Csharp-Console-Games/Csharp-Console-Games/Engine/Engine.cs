@@ -16,6 +16,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         private readonly StringBuilder sb;
         private HashSet<string> towerCoordiantes;
         private HashSet<string> enemiesCoordiantes;
+        private HashSet<string> enemyNamesFromFile;
 
 
         //consts
@@ -38,6 +39,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         //contructors
         public Engine()
         {
+            this.enemyNamesFromFile = new HashSet<string>();
             this.towerCoordiantes = new HashSet<string>();
             this.enemiesCoordiantes = new HashSet<string>();
             this.numberTowerSweeped = DefaultNumberTowerSweeped;        //initialise number towers sweeped
@@ -51,6 +53,10 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         }
         //------------------------------------------------------------------------------------------
 
+        private void AddEnemyNamesFromFile()        //transfer enemy names form the file to the HashSet Collection
+        {
+
+        }
 
 
         //PROPERTIES
@@ -256,7 +262,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             }
         }
 
-        public void CreateCharacter()
+        private void CreateCharacter()
         {
             Regex nameRegex = new Regex(@"[A-Z][a-z]+ [A-Z][a-z]+");
             Match foundValidName;
@@ -308,6 +314,11 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             this.player = new Player(name, mana, health);
         }
 
+        private void ChosePreDifineCharacter()
+        {
+
+        }
+        
         
 
         //implement logic  implement past symbol currentSymbol so on
