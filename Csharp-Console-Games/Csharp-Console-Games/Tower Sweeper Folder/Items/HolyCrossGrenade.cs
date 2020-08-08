@@ -8,6 +8,8 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Items
     {
         //consts
         private const string name = "HolyCrossGrenade";
+        
+        
        
 
         //constructors
