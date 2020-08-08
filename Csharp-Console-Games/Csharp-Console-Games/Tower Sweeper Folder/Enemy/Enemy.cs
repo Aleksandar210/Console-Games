@@ -265,7 +265,14 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         private void Attack()
         {
-
+            if(this.isAbilityAvailable)
+            {
+                this.UseAbility();
+            }
+            else
+            {
+                this.Attack();
+            }
         }
 
         private void ScanArrea()
