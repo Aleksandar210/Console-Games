@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -15,7 +16,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         private const int DefaultHeathPoints = 100;   //on startup
         private const int DefaultManaPoints = 150;    //on startup
         private const char DefaultVisualSigniture = 'E'; //aways
-        
+        private StringBuilder sb = new StringBuilder();
 
         // fields
         private string name;
@@ -186,6 +187,40 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         public char VisualiseOnField => 'E';
 
+        private bool isAbilityAvailable
+        {
+            
+            set
+            {
+                this.sb.Clear();
+                for(int i =0;i<this.spells.Count;i++)
+                {
+                    if(this.Mana>=this.spells[i].ManaCost)
+                    {
+                        this.sb.Append(i + " ");
+                    }
+                }
+
+      
+            }
+            get 
+            {
+                int[] tempSpellsAvailable;
+                tempSpellsAvailable = this.sb.ToString().Trim().Split(" ").Select(int.Parse).ToArray();
+                if(tempSpellsAvailable.Length>0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        private int[] CurrentAvailableAbilites { set; get; }
+        
+
         //Behaviour
 
         public void Patrol()        //this decides direction and MovementExecutes it 
@@ -241,6 +276,13 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         {
 
         }
+
+        private void UseAbility()
+        {
+
+        }
+
+        
 
         private void DecideStartingCurrentSymbol()     //on creation
         {

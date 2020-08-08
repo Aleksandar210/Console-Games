@@ -24,5 +24,17 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         protected int manaCost;
 
         //constructors
+
+
+        //properties
+        public int ManaCost
+        {
+            private set
+            {
+
+            }
+
+            get { return this.manaCost; }
+        }
     }
 }
