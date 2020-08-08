@@ -219,7 +219,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         public void Patrol()        //this decides direction and MovementExecutes it 
         {
             string direction = null;
-            while()
+            while(this.Health>0)
             {
                 if (this.fieldOn.Length - this.ColCoordinate > 35)
                 {
@@ -229,7 +229,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                 {
                     direction = "right";
                 }
-
+                this.Move();
             }
 
 
