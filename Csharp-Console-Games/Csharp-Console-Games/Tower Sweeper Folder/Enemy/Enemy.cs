@@ -188,11 +188,6 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         //Behaviour
 
-      
-
-            return '.';
-        };
-
         public void Patrol()        //this decides direction and MovementExecutes it 
         {
             string direction = null;
@@ -230,6 +225,21 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                     this.fieldOn[this.RowCoordinate][this.ColCoordinate] = this.VisualiseOnField;
                     break;
             }
+        }
+
+        private void Attack()
+        {
+
+        }
+
+        private void ScanArrea()
+        {
+
+        }
+
+        private void ChasePlayer()
+        {
+
         }
 
         private void DecideStartingCurrentSymbol()     //on creation
