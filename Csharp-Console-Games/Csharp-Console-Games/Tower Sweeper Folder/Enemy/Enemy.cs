@@ -221,23 +221,54 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             string direction = null;
             while(this.Health>0)
             {
-                if (this.fieldOn.Length - this.ColCoordinate > 35)
+                switch(this.firstMovement)
                 {
-                    direction = "left";
+                    case -1:
+                        if (this.fieldOn.Length - this.ColCoordinate > 35)
+                        {
+                            direction = "left";
+                        }
+                        else
+                        {
+                            direction = "right";
+                        }
+                        this.fieldOn[this.RowCoordinate][this.ColCoordinate] = this.currentSymbolOn;
+                        this.Move(direction);
+                        break;
+                    default:
+                        if (this.fieldOn.Length - this.ColCoordinate > 35)
+                        {
+                            direction = "left";
+                        }
+                        else
+                        {
+                            direction = "right";
+                        }
+                        this.Move(direction);
+                        break;
                 }
-                else
-                {
-                    direction = "right";
-                }
-                this.Move();
+               
             }
 
 
         }
 
-        private void Move()         //Linked with patrol
+        private void Move(string direction)         //Linked with patrol
         {
+            switch(direction)
+            {
+                case "right":
+                    this.currentSymbolOn = this.fieldOn[this.RowCoordinate][this.ColCoordinate + 1];
+                    this.ColCoordinate++;
+                    this.fieldOn[this.RowCoordinate][this.ColCoordinate] = this.VisualiseOnField;
+                    break;
 
+                case "left":
+                    this.currentSymbolOn = this.fieldOn[this.RowCoordinate][this.ColCoordinate - 1];
+                    this.ColCoordinate--;
+                    this.fieldOn[this.RowCoordinate][this.ColCoordinate] = this.VisualiseOnField;
+                    break;
+            }
         }
 
         private void DecideStartingCurrentSymbol()     //on creation
