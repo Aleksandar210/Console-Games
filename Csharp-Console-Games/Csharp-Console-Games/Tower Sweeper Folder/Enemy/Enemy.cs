@@ -22,7 +22,6 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         private char visualSignature;
         private char[][] fieldOn;
         private char currentSymbolOn;       // needed for movement
-        private int firstMovement = -1;
         private int health;
         private int healthRange;
         private int mana;
@@ -219,35 +218,19 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         public void Patrol()        //this decides direction and MovementExecutes it 
         {
             string direction = null;
-            while(this.Health>0)
+            while (this.Health > 0)
             {
-                switch(this.firstMovement)
+                if (this.fieldOn.Length - this.ColCoordinate > 35)
                 {
-                    case -1:
-                        if (this.fieldOn.Length - this.ColCoordinate > 35)
-                        {
-                            direction = "left";
-                        }
-                        else
-                        {
-                            direction = "right";
-                        }
-                        this.fieldOn[this.RowCoordinate][this.ColCoordinate] = this.currentSymbolOn;
-                        this.Move(direction);
-                        break;
-                    default:
-                        if (this.fieldOn.Length - this.ColCoordinate > 35)
-                        {
-                            direction = "left";
-                        }
-                        else
-                        {
-                            direction = "right";
-                        }
-                        this.Move(direction);
-                        break;
+                    direction = "left";
                 }
-               
+                else
+                {
+                    direction = "right";
+                }
+                this.fieldOn[this.RowCoordinate][this.ColCoordinate] = this.currentSymbolOn;
+                this.Move(direction);
+
             }
 
 
