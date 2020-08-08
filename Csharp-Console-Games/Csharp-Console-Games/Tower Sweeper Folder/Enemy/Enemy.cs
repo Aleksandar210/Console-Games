@@ -209,6 +209,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                 tempSpellsAvailable = this.sb.ToString().Trim().Split(" ").Select(int.Parse).ToArray();
                 if(tempSpellsAvailable.Length>0)
                 {
+                    this.CurrentAvailableAbilites = tempSpellsAvailable;
                     return true;
                 }
                 else
