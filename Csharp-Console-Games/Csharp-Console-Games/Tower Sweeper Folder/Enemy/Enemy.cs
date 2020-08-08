@@ -275,7 +275,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             }
         }
 
-        private void ScanArrea()
+        private void ScanArrea(string direction)
         {
 
         }
