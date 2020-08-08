@@ -69,6 +69,58 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             get { return this.name; }
         }
 
+        public int Health
+        {
+
+            private set
+            {
+                if (value > 0 && value <= 800)
+                {
+                    switch (this.health)
+                    {
+                        case 0:
+                            this.health += value;
+                            break;
+                        default:
+                            int neededHealth = this.HealthRange - this.health;
+                            if (value >= neededHealth)
+                            {
+                                this.health = this.healthRange;
+                            }
+                            else if (value < neededHealth)
+                            {
+                                this.health += value;
+                            }
+                            break;
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException("Health out of range or below it!");
+                }
+
+            }
+
+            get { return this.health; }
+        }
+
+        private int HealthRange
+        {
+            set
+            {
+                if (value <= 0 || value > 800)
+                {
+                    throw new ArgumentException("Invalid Health Range [0-800]");
+                }
+                else
+                {
+
+                    this.healthRange = value;
+                }
+            }
+            get { return this.HealthRange; }
+        }
+
         public int Mana
         {
             private set
@@ -167,13 +219,17 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         public void Patrol()        //this decides direction and MovementExecutes it 
         {
             string direction = null;
-            if(this.fieldOn.Length-this.ColCoordinate>35)
+            while()
             {
-                direction = "left";
-            }
-            else
-            {
-                direction = "right";
+                if (this.fieldOn.Length - this.ColCoordinate > 35)
+                {
+                    direction = "left";
+                }
+                else
+                {
+                    direction = "right";
+                }
+
             }
 
 
