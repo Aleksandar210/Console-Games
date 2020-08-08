@@ -188,29 +188,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         //Behaviour
 
-        private Func<char, char[][], char> DecideDrawAfterWhatToBe = (futureChar, field) =>
-        {
-            switch (futureChar)
-            {
-                case '.':
-                    return '.';
-                    break;
-                case 'E':
-                    return '.';
-                    break;
-                case '_':
-                    return '_';
-                    break;
-                case '-':
-                    return '-';
-                    break;
-                case '|':
-                    return '|';
-                    break;
-                case '+':
-                    return '+';
-                    break;
-            }
+      
 
             return '.';
         };
