@@ -21,7 +21,8 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         private string name;
         private char visualSignature;
         private char[][] fieldOn;
-        private char currentSymbolOn;
+        private char currentSymbolOn;       // needed for movement
+        private char futureSymbolOn;        // needed for movement
         private int firstMovement = -1;
         private int health;
         private int healthRange;
@@ -102,7 +103,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         {
             set
             {
-                if (value <= 0 || value > 700)
+                if (value <= 0 || value > 800)
                 {
                     throw new ArgumentException("Invalid mana range [0-700]");
                 }

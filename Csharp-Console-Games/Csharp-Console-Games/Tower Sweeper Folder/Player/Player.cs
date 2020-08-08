@@ -157,7 +157,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         {
              set
             {
-                if(value<=0 || value>700)
+                if(value<=0 || value>800)
                 {
                     throw new ArgumentException("Invalid mana range [0-700]");
                 }
