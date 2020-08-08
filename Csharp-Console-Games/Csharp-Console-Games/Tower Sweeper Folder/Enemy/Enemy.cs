@@ -22,7 +22,6 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         private char visualSignature;
         private char[][] fieldOn;
         private char currentSymbolOn;       // needed for movement
-        private char futureSymbolOn;        // needed for movement
         private int firstMovement = -1;
         private int health;
         private int healthRange;
@@ -167,6 +166,16 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         public void Patrol()        //this decides direction and MovementExecutes it 
         {
+            string direction = null;
+            if(this.fieldOn.Length-this.ColCoordinate>35)
+            {
+                direction = "left";
+            }
+            else
+            {
+                direction = "right";
+            }
+
 
         }
 
