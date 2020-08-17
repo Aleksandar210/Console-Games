@@ -50,17 +50,17 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
 
         };
 
-        private Action<Player, Enemy> OneHitShield = () =>     //gets destroyed  on first hit
+        private Action<Player, Enemy> OneHitShield = (player, enemy) =>     //gets destroyed  on first hit
          {
 
          };
 
-       private Action<Player, Enemy> UndeadShield = () =>     //when destroyed it respawns wiht prev health -10 and so on until its over
+       private Action<Player, Enemy> UndeadShield = (player, enemy) =>     //when destroyed it respawns wiht prev health -10 and so on until its over
        {
 
        };
 
-        private Action<Player, Enemy> AttackDamageShield = () =>       //whe hit it doubles your damage with half the hit
+        private Action<Player, Enemy> AttackDamageShield = (player, enemy) =>       //whe hit it doubles your damage with half the hit
         {
 
         };
