@@ -30,16 +30,32 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
         {
             set
             {
-                if(value<=0 || armour>150)
+                if(value<=0 || value>150)
                 {
                     throw new ArgumentException("Invalid Shield Value");
                 }
                 else
                 {
-
+                    this.armour = value;
                 }
             }
             get { return this.armour; }
+        }
+
+        protected string Name
+        {
+            set
+            {
+                if(String.IsNullOrEmpty(value) || String.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("Invalid Name I guess");
+                }
+                else
+                {
+                    this.name = value;
+                }
+            }
+            get { return this.name; }
         }
 
 
@@ -49,8 +65,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
 
         }
 
-
-            
+        protected abstract void EffectOnHit();  //this executes some action from class ShieldEffects
 
     }
 }
