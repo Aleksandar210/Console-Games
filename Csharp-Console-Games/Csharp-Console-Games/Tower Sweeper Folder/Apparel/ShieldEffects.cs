@@ -40,15 +40,29 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
 
          };
 
-        private Action TronShield = ()=>        //throws a disc that goes trough all enemies dealing damage
+        private Action TronShield = () =>        //throws a disc that goes trough all enemies dealing damage
         {
 
-        }
+        };
 
         private Action LustShield = () =>       //takes half of the damage value and it absorbs that much hp form enemy
         {
 
         };
 
+        private Action OneHitShield = () =>     //gets destroyed  on first hit
+         {
+
+         };
+
+       private Action UndeadShield = () =>     //when destroyed it respawns wiht prev health -10 and so on until its over
+       {
+
+       };
+
+        private Action AttackDamageShield = () =>       //whe hit it doubles your damage with half the hit
+        {
+
+        };
     }
 }
