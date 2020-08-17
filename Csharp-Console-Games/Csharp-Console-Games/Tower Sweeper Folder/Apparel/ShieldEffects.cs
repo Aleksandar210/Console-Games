@@ -9,14 +9,15 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
         //Collection with Actins
         private Dictionary<string, Action> currentShieldEffects;
 
+        //you gotta implement class for each shield and add its roperties and fields
         //Actions/effects
-        private Action<Player,Enemy> LionShield = (player, enemy) =>       //stacks 5 roars and on 5 it deals 10*5 damage to enemy
+        private Action<Shield,Player,Enemy> LionShield = (Shield,player, enemy) =>       //stacks 5 roars and on 5 it deals 10*5 damage to enemy
         {
             if(player is null)
             {
-
+                
             }
-            else
+            else 
             {
 
             }
