@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace Csharp_Console_Games.Tower_Sweeper_Folder
@@ -7,14 +8,15 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
     public abstract class  Item
     {
         //Resources
-        StringBuilder sb;
-        private bool isHealingType;
-        private bool isDamageType;
-        private bool isBuffType;
+        StringBuilder sb;   //?? I dont remember why I put this here
+        protected bool isHealingType;
+        protected bool isDamageType;
+        protected bool isBuffType;
 
         //consts
-        private const int DefaultDamage = 0;
-        private const int DefaultMana = 0;
+        private const int DefaultDamage = 1;
+        private const int DefaultMana = 1;
+        private const int DefaultHealthRestore = 1;
 
 
         //fields
@@ -22,9 +24,10 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         protected string name;
         protected int damage;
         protected int healthRestore;
-        private int shieldRestore;      //optional
-        private int shieldDamage;       //optional
-        protected int manaCost;
+        protected int healthBuff;         //not implemented yet.
+        protected int shieldRestore;      //optional
+        protected int shieldDamage;       //optional
+        protected int manaCost;           //depleates from mana on use-method
 
 
         //constructors
@@ -35,15 +38,19 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             this.isBuffType = false;
             this.isDamageType = false;
             this.isHealingType = false;
+            this.shieldDamage = 0;
+            this.shieldRestore = 0;
+            this.HealthRestore = DefaultHealthRestore;
+            this.sb = new StringBuilder();  //?? no clue why I put this
         }
 
-        protected Item(string name,string type):this()
+        protected Item(string name,params string[] type):this()
         {
-            this.sb = new StringBuilder();
             this.Name = name;
+           
         }
 
-        protected Item(string name,string type,params int[] damageHealthShieldBuff):this(name,type)
+        protected Item(string name,string[] type,params int[] damageHealthShieldBuff):this(name,type)
         {
             switch(damageHealthShieldBuff.Length)
             {
@@ -54,14 +61,14 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         }
 
         //properties
+
         protected string Name
         {
-            private set
+             set
             {
                 if (String.IsNullOrEmpty(value) || String.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentException("Name cannot be null or empty.");
-                    
                 }
                 else
                 {
@@ -73,7 +80,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         protected int ManaCost
         {
-           private set
+            set
            {
                 if(value<0 || value>700)
                 {
@@ -89,7 +96,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         protected int Damage
         {
-            private set
+             set
             {
                 if(value<=0 || value>=800)
                 {
@@ -105,19 +112,78 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         protected int HealthRestore
         {
-            private set
+             set
             {
-
+                if(value<=0)
+                {
+                    throw new ArgumentException("Invalid Health Restore.");
+                }
+                else
+                {
+                    this.healthRestore = value;
+                }
             }
 
             get { return this.healthRestore; }
         }
 
+        protected int ShiledRestore
+        {
+              set
+             {
+                if(value<=0)
+                {
+                    throw new ArgumentException("Invalid Shield Buff value");
+                }
+                else
+                {
+                    this.shieldRestore = value;
+                }
+            }
+            get { return this.shieldRestore; }
+        }
+
+        protected int ShieldDamageDeal
+        {
+             set
+            {
+                if(value<=0)
+                {
+                    throw new ArgumentException("Invalid shieldDamage value");
+                }
+                else
+                {
+                    this.shieldDamage = value;
+                }
+            }
+            get { return this.shieldDamage; }
+        }
+
 
         //behaviour
         protected abstract void Effect();
-
-
+        protected abstract int CriticalDamageIncrease();
+        
+        private void DeterminType(string[] types) // by including types we can sort them in the shop.
+        {
+            foreach(var item in types)
+            {
+                switch(item.ToLower())
+                {
+                    case "healing":
+                        this.isHealingType = true;
+                        break;
+                    case "buff":
+                        this.isBuffType = true;
+                        break;
+                    case "damage":
+                        this.isDamageType = true;
+                        break;
+                }
+            }
+        }
+        
+       
         public override string ToString()
         {
             this.sb.Append($"{this.Name}");

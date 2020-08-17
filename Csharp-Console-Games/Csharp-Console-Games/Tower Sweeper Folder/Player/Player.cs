@@ -1,4 +1,5 @@
 ﻿using Csharp_Console_Games.Tower_Sweeper_Folder;
+using Csharp_Console_Games.Tower_Sweeper_Folder.Apparel;
 using System;
 using System.Collections.Generic;
 using System.Reflection.Metadata.Ecma335;
@@ -29,7 +30,10 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         private int manaRange;
         private List<Item> items;
         private Spell[] spells;
+        private Shield currentShield;
         private char[][] playerEnvironement;
+        private bool hasApparel;
+
      
         //constructors
         public Player(string name,int mana,int health):this(name)
@@ -300,6 +304,19 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         public void UseSpell()     // bind key
         {
 
+        }
+
+        public void EquipShield(Shield currentShield)
+        {
+            if(this.hasApparel)
+            {
+                Console.Clear();
+                Console.WriteLine($"Are you sure you want to equip {} over {}");
+            }
+            else
+            {
+                this.currentShield = currentShield;
+            }
         }
 
         public void DecreaseHP(int decreaseBy)     // if player takes damage

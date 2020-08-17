@@ -7,16 +7,21 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Items
     public class HolyCrossGrenade : Item
     {
         //consts
-        private const string name = "HolyCrossGrenade";
-        
+        private const string DefautName = "HolyCrossGrenade";
+
+        //fields
+        private string name;
         
        
 
         //constructors
         public HolyCrossGrenade()
         {
-
+            this.name = DefautName;
+            this.isD
         }
+
+
 
 
         //implement effect here
