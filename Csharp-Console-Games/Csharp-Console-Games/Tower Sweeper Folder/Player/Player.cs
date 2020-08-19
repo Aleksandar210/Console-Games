@@ -1,5 +1,6 @@
 ﻿using Csharp_Console_Games.Tower_Sweeper_Folder;
 using Csharp_Console_Games.Tower_Sweeper_Folder.Apparel;
+using Csharp_Console_Games.Tower_Sweeper_Folder.Weapons;
 using System;
 using System.Collections.Generic;
 using System.Reflection.Metadata.Ecma335;
@@ -32,6 +33,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         private List<Item> items;
         private Spell[] spells;
         private Shield currentShield;
+        private Weapon rightHandWeapon;
         private char[][] playerEnvironement;
         private bool hasApparel;
 
@@ -307,16 +309,37 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         }
 
-        public void EquipShield(Shield currentShield)
+        public void EquipShield(Shield desiredShield)   //may need to figure out how to return to field dispaly later on 
         {
+            int answer = -1;
             if(this.hasApparel)
             {
-                Console.Clear();
-                Console.WriteLine($"Are you sure you want to equip {} over {}");
+                do
+                {
+                    Console.Clear();
+                    Console.WriteLine($"Are you sure you want to equip {desiredShield} over {this.currentShield}");
+                    Console.WriteLine("1|YES");
+                    Console.WriteLine("2|NO");
+                    Console.Write("Enter answer: ");
+                    answer = int.Parse(Console.ReadLine());
+                    switch (answer)
+                    {
+                        case 1:
+                            this.currentShield = desiredShield;
+                            break;
+                        case 2:
+                            break;
+                        
+                    }
+
+                }
+                while (answer == 1 || answer == 2);
+
+               
             }
             else
             {
-                this.currentShield = currentShield;
+                this.currentShield = desiredShield;
             }
         }
 
