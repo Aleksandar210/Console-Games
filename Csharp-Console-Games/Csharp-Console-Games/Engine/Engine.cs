@@ -16,7 +16,6 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         private StringBuilder sb;
         private HashSet<string> towerCoordiantes;
         private HashSet<string> enemiesCoordiantes;
-        private HashSet<string> enemyNamesFromFile;
         private List<string[]> predefinedPlayers;
 
 
@@ -43,7 +42,8 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         //contructors
         public Engine()
         {
-            this.enemyNamesFromFile = new HashSet<string>();
+            this.enemyNamesStatsCollection = new HashSet<string>();
+            this.towerNamesCollection = new HashSet<string>();
             this.towerCoordiantes = new HashSet<string>();
             this.enemiesCoordiantes = new HashSet<string>();
             this.predefinedPlayers = new List<string[]>();
@@ -60,6 +60,21 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         private void AddEnemyNamesFromFile()        //transfer enemy names form the file to the HashSet Collection
         {
+            using (var reader = new StreamReader(@"Resources\EnemiesNamesStats.txt"))
+            {
+                while (reader.Peek() >= 0)
+                {
+                    reader.ReadLine().Split(",").Select(tName =>
+                    {
+                        this.enemyNamesStatsCollection.Add(tName);
+                        return tName;
+                    }
+                    );
+
+                }
+
+            }
+
 
         }
 
@@ -69,8 +84,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         }
 
         private void AddTowerNames()
-        {
-            this.sb.Clear();
+        {          
             using (var reader = new StreamReader(@"Resources\TowerNames.txt"))
             {
                 while(reader.Peek()>=0)
@@ -85,7 +99,6 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                 }
                
             }
-
 
         }
 
