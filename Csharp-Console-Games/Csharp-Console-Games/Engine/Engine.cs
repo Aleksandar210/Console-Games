@@ -196,7 +196,31 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         private Shield AssignEnemyAShield(string[] statsGenerated)
         {
-
+            Shield currentEnemyGeneratedShield = null;
+            switch(statsGenerated[3])
+            {
+                case "Wooden Shield":
+                    break;
+                case "Swamp Shield":
+                    break;
+                case "Rock Shield":
+                    break;
+                case "Ice Shield":
+                    break;
+                case "Lion Shield":
+                    break;
+                case "Dragon Shield":
+                    break;
+                case "Golden-Lamp-Shield":
+                    break;
+                case "Emerald Shield":
+                    break;
+                case "Broken Shield":
+                    break;
+                case "Hound Shield":
+                    break;
+                    
+            }
             return null;
         }
 
