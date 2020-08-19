@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
 {
-    class ShieldEffects
+    class ShieldEffects     //this class may be deleted
     {
         //Collection with Actins
         private Dictionary<string, Action> currentShieldEffects;

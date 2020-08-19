@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Console-games\\Csharp-Console-Games\\Csharp-Console-Games\\Csharp-Console-Games.csproj": {}
+    "D:\\Console-Games\\Csharp-Console-Games\\Csharp-Console-Games\\Csharp-Console-Games.csproj": {}
   },
   "projects": {
-    "D:\\Console-games\\Csharp-Console-Games\\Csharp-Console-Games\\Csharp-Console-Games.csproj": {
+    "D:\\Console-Games\\Csharp-Console-Games\\Csharp-Console-Games\\Csharp-Console-Games.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Console-games\\Csharp-Console-Games\\Csharp-Console-Games\\Csharp-Console-Games.csproj",
+        "projectUniqueName": "D:\\Console-Games\\Csharp-Console-Games\\Csharp-Console-Games\\Csharp-Console-Games.csproj",
         "projectName": "Csharp-Console-Games",
-        "projectPath": "D:\\Console-games\\Csharp-Console-Games\\Csharp-Console-Games\\Csharp-Console-Games.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "D:\\Console-games\\Csharp-Console-Games\\Csharp-Console-Games\\obj\\",
+        "projectPath": "D:\\Console-Games\\Csharp-Console-Games\\Csharp-Console-Games\\Csharp-Console-Games.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "D:\\Console-Games\\Csharp-Console-Games\\Csharp-Console-Games\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -52,7 +52,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
