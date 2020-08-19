@@ -58,7 +58,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                 this.currentShield = shield;
             }
            
-            if((weapon is null))
+            if(!(weapon is null))
             {
                 this.currentWeapon = weapon;
             }

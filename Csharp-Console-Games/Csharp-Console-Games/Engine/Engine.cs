@@ -179,7 +179,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                 tempEnemyStatsArray = this.SelectRandomEnemyFromCollection();
 
               this.enemiesOnField.Add(item, new Enemy(tempEnemyStatsArray[0], tempEnemyCoordiantes[0], tempEnemyCoordiantes[1], this.field
-                  ,int.Parse(tempEnemyStatsArray[1]),int.Parse(tempEnemyStatsArray[2])));
+                  ,int.Parse(tempEnemyStatsArray[1]),int.Parse(tempEnemyStatsArray[2])),this.AssignEnemyAShield(tempEnemyStatsArray),);
                 this.field[tempEnemyCoordiantes[0]][tempEnemyCoordiantes[1]] = this.enemiesOnField[item].VisualiseOnField;
             }
 
@@ -206,30 +206,54 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                     currentEnemyGeneratedShield = new SwampShield();
                     break;
                 case "Rock Shield":
-                    currentEnemyGeneratedShield = RockShield();
+                    currentEnemyGeneratedShield = new RockShield();
                     break;
                 case "Ice Shield":
+                    currentEnemyGeneratedShield = new IceShield();
                     break;
                 case "Lion Shield":
+                    currentEnemyGeneratedShield = new LionShield();
                     break;
                 case "Dragon Shield":
+                    currentEnemyGeneratedShield = new DragonShield();
                     break;
                 case "Golden-Lamp-Shield":
+                    currentEnemyGeneratedShield = new GoldenLampShield();
                     break;
                 case "Emerald Shield":
+                    currentEnemyGeneratedShield = new EmeraldShield();
                     break;
                 case "Broken Shield":
+                    currentEnemyGeneratedShield = new BrokenShield();
                     break;
                 case "Hound Shield":
+                    currentEnemyGeneratedShield = new HoundShield();
+                    break;
+                default:
                     break;
                     
             }
             return null;
         }
 
-        private Weapon AssignWeaponToEnemy(string[] statsGenerated)
+        private Weapon AssignWeaponToEnemy(string[] statsGenerated)     //finish this
         {
-
+            switch(statsGenerated[4])
+            {
+                case "Blood Spear":
+                    break;
+                case "Pirate Sword":
+                    break;
+                case "Stone Hammer":
+                    break;
+                case "Blood Mace":
+                    break;
+                case "Ice Katana":
+                    break;
+                case "Noble Sword":
+                    break;
+                    
+            }
             return null;
         }
         

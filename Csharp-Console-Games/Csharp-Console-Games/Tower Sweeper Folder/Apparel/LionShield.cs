@@ -19,7 +19,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
     
 
         //construcotrs
-        public LionShield(Player palyer,Enemy enemy):base(LionShieldName, LionShieldArmourValue)
+        public LionShield():base(LionShieldName, LionShieldArmourValue)
         {
             this.roarStacks = RoarStacksDefault;
         }
