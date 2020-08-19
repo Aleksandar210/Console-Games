@@ -35,8 +35,8 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         private Tower currentTowerIn;
         private char[][] field;
         private char[][] currentField;      //may be the main field or just the floor field
-        private LinkedList<string> enemyNamesStatsCollection;
-        private LinkedList<string> towerNamesCollection;
+        private HashSet<string> enemyNamesStatsCollection;
+        private HashSet<string> towerNamesCollection;
 
         
 
@@ -70,10 +70,23 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         private void AddTowerNames()
         {
+            this.sb.Clear();
             using (var reader = new StreamReader(@"Resources\TowerNames.txt"))
             {
-                
+                while(reader.Peek()>=0)
+                {
+                    reader.ReadLine().Split(",").Select(tName =>
+                    {
+                        this.towerNamesCollection.Add(tName);
+                        return tName;
+                    }
+                    );
+                    
+                }
+               
             }
+
+
         }
 
         //PROPERTIES
