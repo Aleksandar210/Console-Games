@@ -166,23 +166,26 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             }
 
             int[] tempEnemyCoordiantes;
+            string[] tempEnemyStatsArray;
             foreach(var item in this.enemiesCoordiantes)
             {
                 tempEnemyCoordiantes = item.Split(" ", StringSplitOptions.RemoveEmptyEntries)
                     .Select(int.Parse).ToArray();
                 //fix this with the constructor need to add  shields and so on
+                tempEnemyStatsArray = this.SelectRandomEnemyFromCollection();
               this.enemiesOnField.Add(item, new Enemy("Alex", tempEnemyCoordiantes[0], tempEnemyCoordiantes[1], this.field));
                 this.field[tempEnemyCoordiantes[0]][tempEnemyCoordiantes[1]] = this.enemiesOnField[item].VisualiseOnField;
             }
 
         }
 
-        private string SelectRandomEnemyFromCollection()
+        private string[] SelectRandomEnemyFromCollection()
         {
             Random rand = new Random();
             int enemyIndex = rand.Next(0, this.enemyNamesStatsCollection.Count - 1);
             string enemyStats = this.enemyNamesStatsCollection.ElementAt(enemyIndex);
-            return enemyStats;
+            this.enemyNamesStatsCollection.Remove(enemyStats);
+            return enemyStats.Split(",");
         }
 
         
