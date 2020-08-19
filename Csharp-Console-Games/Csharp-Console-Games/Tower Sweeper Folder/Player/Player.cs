@@ -24,6 +24,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         // fields
         private string name;
         private int[] positonOnField;       //position on the field or in the room
+        private int overallDamage;
         private int health;
         private int healthRange;
         private int mana;
@@ -336,6 +337,11 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         {
             this.Health = increaseBy;
 
+        }
+
+        public void IncreaseDamage(int increaseBy)
+        {
+            
         }
 
         public void UpdatePlayerEnvironement(char[][] currentSurroundings)

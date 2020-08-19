@@ -15,15 +15,13 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
 
         //constructors
 
-        public Shield(string name,int armour):this()
-        { 
-
-        }
-
-        public Shield()
+        public Shield(string name,int armour)
         {
-            
+            this.Name = name;
+            this.Armour = armour;
         }
+
+        
 
         //properties
         protected int Armour
