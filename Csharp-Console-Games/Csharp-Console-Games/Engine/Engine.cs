@@ -200,10 +200,13 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             switch(statsGenerated[3])
             {
                 case "Wooden Shield":
+                    currentEnemyGeneratedShield = new WoodenShield();
                     break;
                 case "Swamp Shield":
+                    currentEnemyGeneratedShield = new SwampShield();
                     break;
                 case "Rock Shield":
+                    currentEnemyGeneratedShield = RockShield();
                     break;
                 case "Ice Shield":
                     break;
