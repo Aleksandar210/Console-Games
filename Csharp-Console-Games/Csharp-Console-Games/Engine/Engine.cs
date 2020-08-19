@@ -169,8 +169,6 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
             int[] tempEnemyCoordiantes;
             string[] tempEnemyStatsArray;
-            Shield shiledEnenymWillHave = null;
-            Weapon weaponEnemyWillHave = null;
             foreach(var item in this.enemiesCoordiantes)       
             {
                 tempEnemyCoordiantes = item.Split(" ", StringSplitOptions.RemoveEmptyEntries)
@@ -236,7 +234,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             return null;
         }
 
-        private Weapon AssignWeaponToEnemy(string[] statsGenerated)     //finish this
+        private Weapon AssignWeaponToEnemy(string[] statsGenerated)     //FINISH THIS THING
         {
             switch(statsGenerated[4])
             {
