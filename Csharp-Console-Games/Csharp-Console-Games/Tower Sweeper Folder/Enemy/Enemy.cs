@@ -63,7 +63,6 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                 this.currentWeapon = weapon;
             }
             
-            
         }
 
         private Enemy()

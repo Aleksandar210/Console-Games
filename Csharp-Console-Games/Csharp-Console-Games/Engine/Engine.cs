@@ -35,6 +35,9 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         private Tower currentTowerIn;
         private char[][] field;
         private char[][] currentField;      //may be the main field or just the floor field
+        private LinkedList<string> enemyNamesStatsCollection;
+        private LinkedList<string> TowerNamesCollection;
+
         
 
         //contructors
@@ -60,14 +63,17 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         }
 
-        private void AddPreDifinedPlayers() //adds pre defined characters from file to collection
+        private void AddPreDifinedPlayers() //adds pre defined characters from file to collection   //MAY BE REMOVED
         {
 
         }
 
         private void AddTowerNames()
         {
+            using (var reader = new StreamReader(@"TowerNames.txt"))
+            {
 
+            }
         }
 
         //PROPERTIES
@@ -137,7 +143,8 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             {
                 tempEnemyCoordiantes = item.Split(" ", StringSplitOptions.RemoveEmptyEntries)
                     .Select(int.Parse).ToArray();
-                this.enemiesOnField.Add(item, new Enemy("Alex", tempEnemyCoordiantes[0], tempEnemyCoordiantes[1], this.field));
+                //fix this with the constructor need to add  shields and so on
+             //   this.enemiesOnField.Add(item, new Enemy("Alex", tempEnemyCoordiantes[0], tempEnemyCoordiantes[1], this.field));
                 this.field[tempEnemyCoordiantes[0]][tempEnemyCoordiantes[1]] = this.enemiesOnField[item].VisualiseOnField;
             }
 

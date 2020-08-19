@@ -1,6 +1,7 @@
 ﻿using Csharp_Console_Games.Tower_Sweeper_Folder;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Runtime.ExceptionServices;
@@ -13,16 +14,7 @@ namespace Csharp_Console_Games
         static void Main(string[] args)
         {
             // TowerSweaper();
-            int number = int.Parse(Console.ReadLine());
-            switch(number)
-            {
-                case 1:
-                    Console.WriteLine("it is one");
-                    break;
-                default:
-                    Console.WriteLine("Definetley not one");
-                    break;
-            }
+            TestingTheFiles();
             //experiment with random numbers
             // Console.Write("Enter min range: ");
             // int min = int.Parse(Console.ReadLine());
@@ -39,7 +31,19 @@ namespace Csharp_Console_Games
         }
 
        
+        private static void TestingTheFiles()
+        {
+            StringBuilder sb = new StringBuilder();
+            using (var reader = new StreamReader("TowerNames.txt"))
+            {
+                while(reader.Peek()>=0)
+                {
+                    sb.Append(reader.ReadLine() + Environment.NewLine);
+                }
+            }
 
+            Console.WriteLine(sb.ToString());
+        }
         
 
       
