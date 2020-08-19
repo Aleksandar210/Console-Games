@@ -171,14 +171,14 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             string[] tempEnemyStatsArray;
             Shield shiledEnenymWillHave = null;
             Weapon weaponEnemyWillHave = null;
-            foreach(var item in this.enemiesCoordiantes)
+            foreach(var item in this.enemiesCoordiantes)       
             {
                 tempEnemyCoordiantes = item.Split(" ", StringSplitOptions.RemoveEmptyEntries)
                     .Select(int.Parse).ToArray();
-                //fix this with the constructor need to add  shields and so on
+                
                 tempEnemyStatsArray = this.SelectRandomEnemyFromCollection();
 
-              this.enemiesOnField.Add(item, new Enemy(tempEnemyStatsArray[0], tempEnemyCoordiantes[0], tempEnemyCoordiantes[1], this.field
+              this.enemiesOnField.Add(tempEnemyStatsArray[0], new Enemy(tempEnemyStatsArray[0], tempEnemyCoordiantes[0], tempEnemyCoordiantes[1], this.field
                   ,int.Parse(tempEnemyStatsArray[1]),int.Parse(tempEnemyStatsArray[2]),this.AssignEnemyAShield(tempEnemyStatsArray),this.AssignWeaponToEnemy(tempEnemyStatsArray));
                 this.field[tempEnemyCoordiantes[0]][tempEnemyCoordiantes[1]] = this.enemiesOnField[item].VisualiseOnField;
             }
