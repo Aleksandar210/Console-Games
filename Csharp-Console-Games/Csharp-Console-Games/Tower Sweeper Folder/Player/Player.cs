@@ -320,6 +320,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                     Console.WriteLine($"Are you sure you want to equip {desiredShield} over {this.currentShield}");
                     Console.WriteLine("1|YES");
                     Console.WriteLine("2|NO");
+                    Console.WriteLine("3|Put in bag");
                     Console.Write("Enter answer: ");
                     answer = int.Parse(Console.ReadLine());
                     switch (answer)
@@ -329,7 +330,9 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                             break;
                         case 2:
                             break;
-                        
+                        case 3:
+                           //implement bag
+                            break;
                     }
 
                 }
