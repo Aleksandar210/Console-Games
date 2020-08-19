@@ -34,7 +34,7 @@ namespace Csharp_Console_Games
         private static void TestingTheFiles()
         {
             StringBuilder sb = new StringBuilder();
-            using (var reader = new StreamReader("TowerNames.txt"))
+            using (var reader = new StreamReader(@"Resources\EnemiesNamesStats.txt"))       //its in resoures folder
             {
                 while(reader.Peek()>=0)
                 {

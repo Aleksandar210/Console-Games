@@ -1,0 +1,7 @@
+jil Tantamount,300,500,LionShield,BloodSword|Keneth BewareWolf,300,500,Ice Shield,Water Katana|Huwerd Vortexian,700,200,Wooden Shield,FireGlove
+Fisher Fishron,400,500,Dragon Shield,Wooden Sword|Gingerbread,300,300,null,Candy Sword|Fred McDutch,400,500,Rock Shield,Silver Hammer
+Freeze Specter,500,600,null,Claw Hand X2|Probe the-Probe,255,100,null,Beatle-Gun|Universal Gipsy,600,400,Emerald Shield,Blood-Mace
+Billy Bicks,300,500,Golden-Lamp-Shield,Lamp|White Cultist Slave,400,333,Broken Shield,Metal-Stick|Mimic Boy,400,200,null,null
+Orca Ocania,500,500,Swamp Shield,Wooden Mace|Ice Doctor,500,500,Ice Shield,Frosty Stick|Fee Person,500,600,Hound Shield,Stone Hammer
+Kid,800,800,null,Pirate Sword X2|Courtesan,300,300,null,Blade Fan|Elegant Angell,500,500,null,Blood Spear|Rough Angell,500,500,null,Silver Spear
+Captain Coward,800,800,null,Machine Gun|Psycho Creature,500,700,null,Swamp Sword|Card Player,777,777,null,Blade Card

@@ -13,7 +13,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
     class Engine
     {
         //usable resoures
-        private readonly StringBuilder sb;
+        private StringBuilder sb;
         private HashSet<string> towerCoordiantes;
         private HashSet<string> enemiesCoordiantes;
         private HashSet<string> enemyNamesFromFile;
@@ -36,7 +36,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         private char[][] field;
         private char[][] currentField;      //may be the main field or just the floor field
         private LinkedList<string> enemyNamesStatsCollection;
-        private LinkedList<string> TowerNamesCollection;
+        private LinkedList<string> towerNamesCollection;
 
         
 
@@ -70,9 +70,9 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         private void AddTowerNames()
         {
-            using (var reader = new StreamReader(@"TowerNames.txt"))
+            using (var reader = new StreamReader(@"Resources\TowerNames.txt"))
             {
-
+                
             }
         }
 
