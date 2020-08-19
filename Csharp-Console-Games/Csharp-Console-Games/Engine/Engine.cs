@@ -164,7 +164,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             {
                 this.BuildTower(this.field, item.Split(" ", StringSplitOptions.RemoveEmptyEntries)
                     .Select(int.Parse).ToArray());
-                //this.towersOnTheField.Add(item,);
+                this.towersOnTheField.Add(item,new Tower());
             }
 
             int[] tempEnemyCoordiantes;
@@ -176,8 +176,8 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                 
                 tempEnemyStatsArray = this.SelectRandomEnemyFromCollection();
 
-              this.enemiesOnField.Add(tempEnemyStatsArray[0], new Enemy(tempEnemyStatsArray[0], tempEnemyCoordiantes[0], tempEnemyCoordiantes[1], this.field
-                  ,int.Parse(tempEnemyStatsArray[1]),int.Parse(tempEnemyStatsArray[2]),this.AssignEnemyAShield(tempEnemyStatsArray),this.AssignWeaponToEnemy(tempEnemyStatsArray));
+                this.enemiesOnField.Add(tempEnemyStatsArray[0], new Enemy(tempEnemyStatsArray[0], tempEnemyCoordiantes[0], tempEnemyCoordiantes[1], this.field
+                    , int.Parse(tempEnemyStatsArray[1]), int.Parse(tempEnemyStatsArray[2]), this.AssignEnemyAShield(tempEnemyStatsArray), this.AssignWeaponToEnemy(tempEnemyStatsArray)));
                 this.field[tempEnemyCoordiantes[0]][tempEnemyCoordiantes[1]] = this.enemiesOnField[item].VisualiseOnField;
             }
 

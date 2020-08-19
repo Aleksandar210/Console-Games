@@ -30,7 +30,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Buildings
            
         }
 
-        public Tower()
+        private Tower()
         {
             this.floorCount = this.RandomNumberGenerator(5, 7);
             this.currentFloors = new Floor[this.floorCount];
@@ -92,8 +92,6 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Buildings
            {
                 this.currentFloors[i] = new Floor(i + 1);
            }
-
-
         }
 
         //Helping Methods
