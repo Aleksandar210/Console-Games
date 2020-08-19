@@ -12,8 +12,17 @@ namespace Csharp_Console_Games
     {
         static void Main(string[] args)
         {
-            TowerSweaper();
-
+            // TowerSweaper();
+            int number = int.Parse(Console.ReadLine());
+            switch(number)
+            {
+                case 1:
+                    Console.WriteLine("it is one");
+                    break;
+                default:
+                    Console.WriteLine("Definetley not one");
+                    break;
+            }
             //experiment with random numbers
             // Console.Write("Enter min range: ");
             // int min = int.Parse(Console.ReadLine());

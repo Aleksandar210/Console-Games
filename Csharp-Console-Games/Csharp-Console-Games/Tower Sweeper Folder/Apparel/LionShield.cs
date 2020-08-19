@@ -46,7 +46,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
         {
             if(this.roarStacks==5 && this.isPlayerOwner)
             {
-                this.player.In
+                //this.player.In
             }
             this.roarStacks++;
         }

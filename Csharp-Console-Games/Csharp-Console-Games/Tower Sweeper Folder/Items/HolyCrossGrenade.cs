@@ -18,7 +18,12 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Items
         public HolyCrossGrenade()
         {
             this.name = DefautName;
-            this.isD
+            //this.isD
+        }
+
+        protected override int CriticalDamageIncrease()
+        {
+            throw new NotImplementedException();
         }
 
 
