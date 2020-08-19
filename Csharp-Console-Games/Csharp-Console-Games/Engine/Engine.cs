@@ -60,11 +60,12 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         private void AddEnemyNamesFromFile()        //transfer enemy names form the file to the HashSet Collection
         {
+
             using (var reader = new StreamReader(@"Resources\EnemiesNamesStats.txt"))
             {
                 while (reader.Peek() >= 0)
                 {
-                    reader.ReadLine().Split(",").Select(tName =>
+                    reader.ReadLine().Split("|").Select(tName =>
                     {
                         this.enemyNamesStatsCollection.Add(tName);
                         return tName;
