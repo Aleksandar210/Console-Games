@@ -164,7 +164,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             {
                 this.BuildTower(this.field, item.Split(" ", StringSplitOptions.RemoveEmptyEntries)
                     .Select(int.Parse).ToArray());
-                this.towersOnTheField.Add(item,new Tower());
+                this.towersOnTheField.Add(item,new Tower());    //IMPLEMENT RANDOM NAME ASSIGN
             }
 
             int[] tempEnemyCoordiantes;
