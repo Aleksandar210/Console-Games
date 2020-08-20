@@ -370,7 +370,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             this.overallDamage += increaseBy;
         }
 
-        public void UpdatePlayerEnvironement(char[][] currentSurroundings)
+        public void UpdatePlayerEnvironement(char[][] currentSurroundings)          //NOT SURE WHY
         {
             this.playerEnvironement = currentSurroundings;
         }
