@@ -29,9 +29,9 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Weapons
         }
 
         //properties
-        protected int Damage
+        public int Damage
         {
-            set
+           private set
             {
                 if(value<=0 || value >110)
                 {
@@ -46,9 +46,9 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Weapons
             get { return this.damage; }
         }
 
-        protected string Name
+        public string Name
         {
-            set
+           private set
             {
                 if(String.IsNullOrEmpty(value) || String.IsNullOrWhiteSpace(value))
                 {
