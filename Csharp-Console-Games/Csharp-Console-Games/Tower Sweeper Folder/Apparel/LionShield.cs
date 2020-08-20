@@ -48,12 +48,13 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
                 this.roarStacks = 0;
                 return;
             }
-            else
+            else if(this.roarStacks==5 && !this.isPlayerOwner)
             {
                 this.enemy.IncreaseDamage(10 * 5);
                 this.roarStacks = 0;
                 return;
             }
+
             this.roarStacks++;
         }
     }

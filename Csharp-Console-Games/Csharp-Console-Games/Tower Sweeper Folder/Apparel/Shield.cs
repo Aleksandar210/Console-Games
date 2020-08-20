@@ -6,6 +6,8 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
 {
     public abstract class Shield
     {
+
+        
         //consts
         private const int DefaultArmour = 1;
         private const string DefaultName = "ShieldName";
@@ -75,11 +77,12 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
 
 
         //behaviour
-        protected void Hit(int damageReceived)
+        public void Hit(int damageReceived)
         {
             if(this.currentArmourValue-damageReceived<=0)
             {
                 this.isShieldDestroyed = true;
+                return;
             }
             else
             {
@@ -88,7 +91,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
             
         }
 
-        protected void FixShield(int fixBy)
+        public void FixShield(int fixBy)
         {
             if(this.ArmourValue+fixBy<=this.ArmourRange)
             {

@@ -14,7 +14,8 @@ namespace Csharp_Console_Games
         static void Main(string[] args)
         {
             // TowerSweaper();
-            TestingTheFiles();
+            TestingFiles2();
+            //TestingTheFiles();
             //experiment with random numbers
             // Console.Write("Enter min range: ");
             // int min = int.Parse(Console.ReadLine());
@@ -29,6 +30,8 @@ namespace Csharp_Console_Games
 
             
         }
+
+      
 
        
         private static void TestingTheFiles()

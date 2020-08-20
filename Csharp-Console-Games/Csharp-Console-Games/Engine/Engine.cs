@@ -164,7 +164,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             {
                 this.BuildTower(this.field, item.Split(" ", StringSplitOptions.RemoveEmptyEntries)
                     .Select(int.Parse).ToArray());
-                this.towersOnTheField.Add(item,new Tower());    //IMPLEMENT RANDOM NAME ASSIGN  
+              //  this.towersOnTheField.Add(item,new Tower());    //IMPLEMENT RANDOM NAME ASSIGN  
             }
 
             int[] tempEnemyCoordiantes;
@@ -210,7 +210,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                     currentEnemyGeneratedShield = new IceShield();
                     break;
                 case "Lion Shield":
-                    currentEnemyGeneratedShield = new LionShield();
+                    //currentEnemyGeneratedShield = new LionShield();
                     break;
                 case "Dragon Shield":
                     currentEnemyGeneratedShield = new DragonShield();

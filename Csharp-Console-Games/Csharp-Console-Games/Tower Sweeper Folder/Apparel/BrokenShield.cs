@@ -9,17 +9,31 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
         //Broken Shield ->name
 
         //fields
-        //No Fields for this Shield or Logic (basic shield)
+        private int roarStacks;
+        private Player player;
+        private Enemy enemy;
+        private bool isPlayerOwner;
+        
 
-        public BrokenShield():base("Broken Shield",25)
+        private BrokenShield():base("Broken Shield",25)
         {
 
+        }
+
+        public BrokenShield(Player player):this()
+        {
+            this.isPlayerOwner = true;
+        }
+
+        public BrokenShield(Enemy enemy):this()
+        {
+            this.isPlayerOwner = false;
         }
 
 
         protected override void EffectOnHit()
         {
-            
+            // no effect
         }
     }
 }
