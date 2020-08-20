@@ -6,5 +6,14 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Weapons
 {
     public abstract class Weapon
     {
+        //consts
+
+        //fields
+
+        //costructs
+
+        //properties
+
+        //behaviour
     }
 }

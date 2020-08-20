@@ -27,7 +27,6 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Buildings
         public Tower(string name):this()
         {
             this.Name = name;
-           
         }
 
         private Tower()
