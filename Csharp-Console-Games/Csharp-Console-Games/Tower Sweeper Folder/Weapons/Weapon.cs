@@ -37,6 +37,23 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Weapons
             get { return this.damage; }
         }
 
+        protected string Name
+        {
+            set
+            {
+                if(String.IsNullOrEmpty(value) || String.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("Invalid name");
+                }
+                else
+                {
+                    this.name = value;
+                }
+            }
+
+            get { return this.name; }
+        }
+
         //behaviour
     }
 }
