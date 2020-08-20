@@ -13,7 +13,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Weapons
         protected int damage;
         protected readonly int durabilityRange;       //this is the constant range
         protected int currentDurabilityValue;       //this is changable
-        protected string name;
+        protected string name;                      
 
         //costructs
         public Weapon(string name,int damage, int durability):this()
@@ -63,7 +63,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Weapons
             get { return this.name; }
         }
 
-        protected int DurabilityRange
+        public int DurabilityRange
         {
            private set
             {
@@ -93,7 +93,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Weapons
             }
             else
             {
-
+                this.currentDurabilityValue = this.DurabilityRange;
             }
         }
     }

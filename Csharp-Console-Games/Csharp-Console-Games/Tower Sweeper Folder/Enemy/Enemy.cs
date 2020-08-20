@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection.PortableExecutable;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
@@ -314,7 +315,20 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         }
 
-        
+        public void IncreaseHealth(int increaseBy)
+        {
+            //chekc for boundries
+        }
+
+        public void DecreaseDamage(int decreaseBy)
+        {
+            //no boundries to damage
+        }
+
+        public void IncreaseDamage(int increaseBy)
+        {
+            this.overallDamage += increaseBy;
+        }
 
         private void DecideStartingCurrentSymbol()     //on creation
         {

@@ -8,25 +8,30 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
     {
         //consts
         private const int DefaultArmour = 1;
-        private const string DefaultName = "602";
+        private const string DefaultName = "ShieldName";
+        private bool DefaultIsShieldDestroyed = false;
         //fields
         protected string name;
-        protected int armour;
+        protected int armourRange;
+        protected int currentArmourValue;
+        protected bool isShieldDestroyed;
 
         //constructors
 
         public Shield(string name,int armour)
         {
             this.Name = name;
-            this.Armour = armour;
+            this.ArmourRange = armour;
+            this.currentArmourValue = this.ArmourRange;
+            this.isShieldDestroyed = DefaultIsShieldDestroyed;
         }
 
         
 
         //properties
-        protected int Armour
+        protected int ArmourRange
         {
-            set
+            private set
             {
                 if(value<=0 || value>150)
                 {
@@ -34,10 +39,10 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
                 }
                 else
                 {
-                    this.armour = value;
+                    this.armourRange = value;
                 }
             }
-            get { return this.armour; }
+            get { return this.armourRange; }
         }
 
         protected string Name
@@ -56,11 +61,43 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
             get { return this.name; }
         }
 
+        protected int ArmourValue
+        {
+            set
+            {
+                if(value<=0 || value>=this.ArmourRange)
+                {
+                    throw new ArgumentException("Invalid Armour value ");
+                }
+            }
+            get { return this.currentArmourValue; }
+        }
+
 
         //behaviour
         protected void Hit(int damageReceived)
         {
+            if(this.currentArmourValue-damageReceived<=0)
+            {
+                this.isShieldDestroyed = true;
+            }
+            else
+            {
+                this.currentArmourValue -= damageReceived;
+            }
+            
+        }
 
+        protected void FixShield(int fixBy)
+        {
+            if(this.ArmourValue+fixBy<=this.ArmourRange)
+            {
+                this.ArmourValue += fixBy;
+            }
+            else
+            {
+                this.ArmourValue = this.ArmourRange;
+            }
         }
 
         protected abstract void EffectOnHit();  //this executes some action from class ShieldEffects

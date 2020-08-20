@@ -367,7 +367,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         public void IncreaseDamage(int increaseBy)
         {
-            
+            this.overallDamage += increaseBy;
         }
 
         public void UpdatePlayerEnvironement(char[][] currentSurroundings)

@@ -19,34 +19,40 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
     
 
         //construcotrs
-        public LionShield():base(LionShieldName, LionShieldArmourValue)
+        private LionShield():base(LionShieldName, LionShieldArmourValue)
         {
             this.roarStacks = RoarStacksDefault;
+            
+        }
+
+        public LionShield(Player player):this()
+        {
+            this.isPlayerOwner = true;
+        }
+
+        public LionShield(Enemy enemy):this()
+        {
+            this.isPlayerOwner = false;
         }
 
         //properties
 
 
         //behaviour
-
-        private void AssignOwner(Player player,Enemy enemy)
-        {
-            if(player is null)
-            {
-                this.enemy = enemy;
-                this.isPlayerOwner = false;
-            }
-            else
-            {
-                this.player = player;
-                this.isPlayerOwner = true;
-            }
-        }
+  
         protected override void EffectOnHit()
         {
             if(this.roarStacks==5 && this.isPlayerOwner)
             {
-                //this.player.In
+                this.player.IncreaseDamage(10 * 5);
+                this.roarStacks = 0;
+                return;
+            }
+            else
+            {
+                this.enemy.IncreaseDamage(10 * 5);
+                this.roarStacks = 0;
+                return;
             }
             this.roarStacks++;
         }
