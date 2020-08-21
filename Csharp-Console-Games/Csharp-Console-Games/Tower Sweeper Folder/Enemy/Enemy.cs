@@ -326,7 +326,15 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         public void DecreaseDamage(int decreaseBy)
         {
-            //no boundries to damage
+           if(this.Health-decreaseBy<=this.HealthRange/2)
+            {
+                this.visualSignature = DefaultBelowHalfHpSignature;
+                this.Health -= decreaseBy;
+                return;
+            }
+
+            this.Health -= decreaseBy;
+           
         }
 
         public void IncreaseDamage(int increaseBy)
