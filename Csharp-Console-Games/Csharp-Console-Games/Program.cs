@@ -72,6 +72,12 @@ namespace Csharp_Console_Games
         private static void SelecteOption(List<string> options)
         {
             int currentPositon = 0;
+            string selectedOption = null;
+            do
+            {
+
+            }
+            while (selectedOption is null);
 
         }
 
