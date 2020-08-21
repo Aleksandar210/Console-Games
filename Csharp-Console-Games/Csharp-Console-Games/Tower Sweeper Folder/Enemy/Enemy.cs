@@ -12,30 +12,31 @@ using System.Text;
 
 namespace Csharp_Console_Games.Tower_Sweeper_Folder
 {
-    public class Enemy
+    public abstract class Enemy
     {
         //consts
         private const int DefaultHeathPoints = 100;   //on startup
         private const int DefaultManaPoints = 150;    //on startup
-        private const char DefaultVisualSigniture = 'E'; //aways
+        protected const char DefaultAboveHalfHPVisualSigniture = 'E'; //when above half HP
+        protected const char DefaultBelowHalfHpSignature = 'e'; 
         private StringBuilder sb = new StringBuilder();
 
         // fields
-        private string name;
-        private char visualSignature;
-        private char[][] fieldOn;
-        private char currentSymbolOn;       // needed for movement
-        private int health;
-        private int healthRange;
-        private int mana;
-        private int manaRange;
-        private int overallDamage;
-        private int xCoordinate;
-        private int yCoordinate;
-        private Shield currentShield;
-        private Weapon currentWeapon;
-        private List<Item> items;   
-        private List<Spell> spells;
+        protected string name;
+        protected char visualSignature;
+        protected char[][] fieldOn;
+        protected char currentSymbolOn;       // needed for movement
+        protected int health;
+        protected int healthRange;
+        protected int mana;
+        protected int manaRange;
+        protected int overallDamage;
+        protected int xCoordinate;
+        protected int yCoordinate;
+        protected Shield currentShield;
+        protected Weapon currentWeapon;
+        protected List<Item> items;   
+        protected List<Spell> spells;
 
         //constructor 
         public Enemy(string name,int x, int y,char[][] field,int manaRange,int healthRange,Shield shield,Weapon weapon)
@@ -68,7 +69,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         private Enemy()
         {
-            this.visualSignature = DefaultVisualSigniture;
+            this.visualSignature = DefaultAboveHalfHPVisualSigniture;
             this.items = new List<Item>(10);
             this.spells = new List<Spell>(3);
             this.currentShield = null;
@@ -212,7 +213,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         public char VisualiseOnField => 'E';
 
-        private bool isAbilityAvailable
+        protected bool isAbilityAvailable
         {
             
             set
@@ -243,6 +244,9 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                 }
             }
         }
+
+        public int Damage => this.overallDamage;
+        
 
         private int[] CurrentAvailableAbilites { set; get; }
         
