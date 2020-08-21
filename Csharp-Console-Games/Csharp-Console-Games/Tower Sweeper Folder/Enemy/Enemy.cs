@@ -334,14 +334,24 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         public void DecreaseDamage(int decreaseBy)
         {
-           if(this.Health-decreaseBy<=this.HealthRange/2)
+            if (this.Health - decreaseBy <= 0)
             {
-                this.visualSignature = DefaultBelowHalfHpSignature;
-                this.Health -= decreaseBy;
                 return;
             }
+            else
+            {
+                if (this.Health - decreaseBy <= this.HealthRange / 2)
+                {
+                    this.visualSignature = DefaultBelowHalfHpSignature;
+                    this.Health -= decreaseBy;
+                    return;
+                }
 
-            this.Health -= decreaseBy;
+                this.Health -= decreaseBy;
+
+            }
+
+            
            
         }
 
