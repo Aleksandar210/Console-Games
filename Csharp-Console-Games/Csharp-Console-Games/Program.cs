@@ -5,6 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
+using System.Runtime.CompilerServices;
 using System.Runtime.ExceptionServices;
 using System.Text;
 
@@ -69,7 +70,7 @@ namespace Csharp_Console_Games
             Console.WriteLine(imageAscii);
         }
 
-        private static void SelecteOption(List<string> options,string[] colors,string imageAsii)
+        private static void SelecteOption(List<string> options,string[] colors,string imageAscii)
         {
             int currentPositon = 0;
             int previousPositon = 0;
@@ -78,7 +79,7 @@ namespace Csharp_Console_Games
             ConsoleKey ch;
             do
             {
-                 ch = Console.ReadKey(false).Key;
+                 ch = Console.ReadKey(true).Key;
                 switch (ch)
                 {
                     
@@ -86,20 +87,30 @@ namespace Csharp_Console_Games
                         if(currentPositon-1>=0)
                         {
                             currentPositon -= 1;
-                            previousPositon += 1;
+                            previousPositon  = currentPositon+1;
                             options[previousPositon] = options[previousPositon].Trim(new char[] { '|' });
                             options[currentPositon] = "|" + options[currentPositon] + "|";
                             DisplayMenueOptions(options, colors);
-                            DisplayImageBelowOptions();
+                            DisplayImageBelowOptions(imageAscii);
+                        }
+                        else
+                        {
+                            continue;
                         }
                         break;
                     case ConsoleKey.DownArrow:
-                        if (currentPositon + 1 <=3)
+                        if (currentPositon + 1 <=options.Count-1)
                         {
                             currentPositon += 1;
-                            previousPositon -= 1;
+                            previousPositon =  currentPositon-1;
                             options[previousPositon] = options[previousPositon].Trim(new char[] { '|' });
                             options[currentPositon] = "|" + options[currentPositon] + "|";
+                            DisplayMenueOptions(options, colors);
+                            DisplayImageBelowOptions(imageAscii);
+                        }
+                        else
+                        {
+                            continue;
                         }
                         break;
                     case ConsoleKey.Enter:
@@ -135,8 +146,11 @@ namespace Csharp_Console_Games
                     sb.Append(reader.ReadLine() + Environment.NewLine);
                 }
             }
+            DisplayMenueOptions(options, colorsForTheConsole);
+            DisplayImageBelowOptions(sb.ToString());
+            SelecteOption(options, colorsForTheConsole,sb.ToString());
 
-            Console.WriteLine(sb.ToString());
+
         }
         
 
