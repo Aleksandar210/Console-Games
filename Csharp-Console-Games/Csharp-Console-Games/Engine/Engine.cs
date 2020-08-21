@@ -379,7 +379,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             
         }
 
-        private void SpawnEnemies(char[][] field,HashSet<string> previousEnemyCoordinates)
+        private void SpawnEnemies(char[][] field,HashSet<string> previousEnemyCoordinates) // cant remember why I made that
         {
             
         }
