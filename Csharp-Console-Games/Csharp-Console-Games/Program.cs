@@ -73,11 +73,54 @@ namespace Csharp_Console_Games
         {
             int currentPositon = 0;
             string selectedOption = null;
+            ConsoleKey ch;
             do
             {
+                 ch = Console.ReadKey(false).Key;
+                switch (ch)
+                {
+                    
+                    case ConsoleKey.UpArrow:
+                        
+                        break;
+                    case ConsoleKey.DownArrow:
+                       
+                        break;
+                    case ConsoleKey.Enter:
+
+                        break;
+
+                }
 
             }
             while (selectedOption is null);
+
+        }
+
+
+        private void MoveArrowKeys()
+        {
+
+            var ch = Console.ReadKey(false).Key;
+            switch (ch)
+            {
+                case ConsoleKey.LeftArrow:
+                    this.player.Move("left");
+                    return;
+                case ConsoleKey.UpArrow:
+                    this.player.Move("forward");
+                    break;
+                case ConsoleKey.DownArrow:
+                    this.player.Move("backward");
+                    break;
+                case ConsoleKey.RightArrow:
+                    this.player.Move("right");
+                    break;
+
+                default:
+
+                    break;
+            }
 
         }
 
