@@ -6,11 +6,12 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
 {
     class SwampShield:Shield
     {
-        //Swamp Shield -> name
+        //constatns
+        private const int DefaultRootStackValue = 0;
 
 
         //fields
-        //create hit by logic and make the Enemy class abstract
+        private int rootStacks;
         private Player player;
         private Enemy enemy;
         private bool isPlayerOwner;
@@ -18,33 +19,34 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
 
         private SwampShield():base("Swamp Shield",60)
         {
-
+            this.rootStacks = DefaultRootStackValue;
         }
 
         public SwampShield(Enemy enemy):this()
         {
-
+            this.isPlayerOwner = false;
+            this.enemy = enemy;
         }
 
         public SwampShield(Player player):this()
         {
-
+            this.isPlayerOwner = true;
+            this.player = player;
         }
 
 
+        //on every 3 stacks the shield fixes 5 % of its armour
         protected override void EffectOnHit()
         {
-            if (this.roarStacks == 5 && this.isPlayerOwner)
+            this.rootStacks++;
+            if (this.rootStacks%3==0 && this.isPlayerOwner)
             {
-                this.player.IncreaseDamage(10 * 5);
-                this.roarStacks = 0;
+                
                 return;
             }
-            else if (this.roarStacks == 5 && !this.isPlayerOwner)
+            else if (this.rootStacks%3==0 && !this.isPlayerOwner)
             {
-                this.enemy.IncreaseDamage(10 * 5);
-                this.roarStacks = 0;
-                return;
+                
             }
         }
     }
