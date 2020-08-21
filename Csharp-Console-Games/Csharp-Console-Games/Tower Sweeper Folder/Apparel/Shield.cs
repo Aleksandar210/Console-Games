@@ -79,7 +79,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
         //behaviour
         public void Hit(int damageReceived)
         {
-           
+            this.EffectOnHit();
             if(this.currentArmourValue-damageReceived<=0)
             {
                 this.isShieldDestroyed = true;
