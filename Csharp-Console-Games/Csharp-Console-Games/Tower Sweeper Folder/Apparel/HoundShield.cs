@@ -32,7 +32,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
 
         }
 
-        public HoundShield(Enemy enemy,int towerNumber):this()
+        public HoundShield(Enemy enemy,Player player,int towerNumber):this()
         {
             this.isPlayerOwner = false;
             this.enemy = enemy;
@@ -41,7 +41,17 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
 
         public HoundShield(Player player):this()
         {
-
+            this.isPlayerOwner = true;
+            this.player = player;
+            if (this.player.ClearedTowers == 0)
+            {
+                this.damage = 5;
+            }
+            else
+            {
+                this.damage = this.player.ClearedTowers * 10;
+            }
+            
         }
 
 
