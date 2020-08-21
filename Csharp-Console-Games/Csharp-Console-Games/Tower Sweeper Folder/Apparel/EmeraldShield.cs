@@ -8,6 +8,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
     {
         //Emerald Shield -> name
         //when hit this shields gets only 5% of the attack value which makes him the rarest shield which reminds me to include rare
+        //so to do the logic I have to restore 5 value from the attack to the fixShield method
 
         //fields
         
@@ -22,12 +23,14 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
 
         public EmeraldShield(Enemy enemy):this()
         {
-
+            this.isPlayerOwner = false;
+            this.enemy = enemy;
         }
 
         public EmeraldShield(Player player):this()
         {
-
+            this.isPlayerOwner = true;
+            this.player = player;
         }
 
         protected override void EffectOnHit()
