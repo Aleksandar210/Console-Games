@@ -14,6 +14,9 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
         //which means that there will be overall damage minus the cleared ones
 
 
+        //Note make an abstract class for Human entity so that the enemy and player can inherit something which can be used everywhere
+
+
         //consts
         private const int DamagePerTower = 10;
         
