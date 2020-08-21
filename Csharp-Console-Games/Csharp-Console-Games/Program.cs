@@ -1,6 +1,7 @@
 ﻿using Csharp_Console_Games.Tower_Sweeper_Folder;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
@@ -33,7 +34,21 @@ namespace Csharp_Console_Games
             
         }
 
-
+        private static void SwitchConsoleColor(string colorName)
+        {
+            switch (colorName)
+            {
+                case "Green":
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    break;
+                case "LightBlue":
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    break;
+                case "DarkYellow":
+                    
+                        break;
+            }
+        }
 
 
       
