@@ -10,6 +10,9 @@
     <None Update="Resources\EnemiesNamesStats.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Resources\MainMenueAsciImage.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\TowerNames.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

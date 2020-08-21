@@ -179,9 +179,9 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
 
                 //Enemy is abstract make a class inhereting from enemy and add it 
-                this.enemiesOnField.Add(tempEnemyStatsArray[0], new Enemy(tempEnemyStatsArray[0], tempEnemyCoordiantes[0], tempEnemyCoordiantes[1], this.field
-                    , int.Parse(tempEnemyStatsArray[1]), int.Parse(tempEnemyStatsArray[2]), this.AssignEnemyAShield(tempEnemyStatsArray), this.AssignWeaponToEnemy(tempEnemyStatsArray)));
-                this.field[tempEnemyCoordiantes[0]][tempEnemyCoordiantes[1]] = this.enemiesOnField[item].VisualiseOnField;
+               // this.enemiesOnField.Add(tempEnemyStatsArray[0], new Enemy(tempEnemyStatsArray[0], tempEnemyCoordiantes[0], tempEnemyCoordiantes[1], this.field
+                //    , int.Parse(tempEnemyStatsArray[1]), int.Parse(tempEnemyStatsArray[2]), this.AssignEnemyAShield(tempEnemyStatsArray), this.AssignWeaponToEnemy(tempEnemyStatsArray)));
+               // this.field[tempEnemyCoordiantes[0]][tempEnemyCoordiantes[1]] = this.enemiesOnField[item].VisualiseOnField;
             }
 
             //finaly add the player on the field ,also make the player class abstract so that you can add personal stats for each player
@@ -204,25 +204,25 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             switch(statsGenerated[3])
             {
                 case "Wooden Shield":
-                    currentEnemyGeneratedShield = new WoodenShield(enemy);
+                   // currentEnemyGeneratedShield = new WoodenShield(enemy);
                     break;
                 case "Swamp Shield":
                     currentEnemyGeneratedShield = new SwampShield(enemy);
                     break;
                 case "Rock Shield":
-                    currentEnemyGeneratedShield = new RockShield(enemy);
+                  //  currentEnemyGeneratedShield = new RockShield(enemy);
                     break;
                 case "Ice Shield":
-                    currentEnemyGeneratedShield = new IceShield(enemy);
+                   // currentEnemyGeneratedShield = new IceShield(enemy);
                     break;
                 case "Lion Shield":
                     currentEnemyGeneratedShield = new LionShield(enemy);
                     break;
                 case "Dragon Shield":
-                    currentEnemyGeneratedShield = new DragonShield(enemy);
+                   // currentEnemyGeneratedShield = new DragonShield(enemy);
                     break;
                 case "Golden-Lamp-Shield":
-                    currentEnemyGeneratedShield = new GoldenLampShield(enemy);
+                   // currentEnemyGeneratedShield = new GoldenLampShield(enemy);
                     break;
                 case "Emerald Shield":
                     currentEnemyGeneratedShield = new EmeraldShield(enemy);
@@ -231,7 +231,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                     currentEnemyGeneratedShield = new BrokenShield(enemy);
                     break;
                 case "Hound Shield":
-                    currentEnemyGeneratedShield = new HoundShield(enemy);
+                   // currentEnemyGeneratedShield = new HoundShield(enemy);
                     break;
                 default:
                     break;

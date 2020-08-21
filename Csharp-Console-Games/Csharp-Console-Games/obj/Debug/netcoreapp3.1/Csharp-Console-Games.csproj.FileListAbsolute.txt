@@ -26,3 +26,4 @@ D:\Console-games\Csharp-Console-Games\Csharp-Console-Games\bin\Debug\netcoreapp3
 D:\Console-games\Csharp-Console-Games\Csharp-Console-Games\obj\Debug\netcoreapp3.1\Csharp-Console-Games.genruntimeconfig.cache
 D:\Console-Games\Csharp-Console-Games\Csharp-Console-Games\bin\Debug\netcoreapp3.1\Resources\EnemiesNamesStats.txt
 D:\Console-Games\Csharp-Console-Games\Csharp-Console-Games\bin\Debug\netcoreapp3.1\Resources\TowerNames.txt
+D:\Console-Games\Csharp-Console-Games\Csharp-Console-Games\bin\Debug\netcoreapp3.1\Resources\MainMenueAsciImage.txt

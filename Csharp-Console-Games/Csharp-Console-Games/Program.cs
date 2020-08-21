@@ -14,7 +14,9 @@ namespace Csharp_Console_Games
         static void Main(string[] args)
         {
             // TowerSweaper();
-            TestingFiles2();
+          
+            
+            TestingTheFiles();
             //TestingTheFiles();
             //experiment with random numbers
             // Console.Write("Enter min range: ");
@@ -31,13 +33,24 @@ namespace Csharp_Console_Games
             
         }
 
-      
 
-       
+
+
+      
         private static void TestingTheFiles()
         {
             StringBuilder sb = new StringBuilder();
-            using (var reader = new StreamReader(@"Resources\EnemiesNamesStats.txt"))       //its in resoures folder
+            string[] colorsForTheConsole = new string[] { "Green", "LightBlue", "DarkYellow", "Red" };
+            List<string> options = new List<string>();
+            options.Add("New Game");
+            options.Add("Load Game");
+            options.Add("Options");
+            options.Add("Quit");
+            for(int i =0;i<options.Count;i++)
+            {
+
+            }
+            using (var reader = new StreamReader(@"Resources\MainMenueAsciImage.txt"))       //its in resoures folder
             {
                 while(reader.Peek()>=0)
                 {
