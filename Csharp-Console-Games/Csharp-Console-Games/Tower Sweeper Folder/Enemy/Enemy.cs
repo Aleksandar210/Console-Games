@@ -253,7 +253,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         //Behaviour
 
-        public void Patrol()        //this decides direction and MovementExecutes it 
+        public void Patrol()        //this decides direction and MovementExecutes it, add scan I think dont remember
         {
             string direction = null;
             while (this.Health > 0)
@@ -274,7 +274,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         }
 
-        protected void Move(string direction)         //Linked with patrol
+        protected void Move(string direction)         //Linked with patrol 
         {
             switch(direction)
             {
