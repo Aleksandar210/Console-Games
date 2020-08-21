@@ -294,7 +294,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         protected void Attack()
         {
-            if(this.isAbilityAvailable)
+            if(this.isAbilityAvailable)     //when creating the abilities modify this to work with range as well
             {
                 this.UseAbility();
             }
@@ -304,7 +304,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             }
         }
 
-        protected void ScanArrea(string direction)
+        protected void ScanArrea(string direction)      //directio might be the direction the enemy is facing
         {
 
         }
