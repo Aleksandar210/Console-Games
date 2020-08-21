@@ -45,13 +45,36 @@ namespace Csharp_Console_Games
                     Console.ForegroundColor = ConsoleColor.Blue;
                     break;
                 case "DarkYellow":
-                    
-                        break;
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    break;
+                case "Red":
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    break;      
             }
         }
 
+        private static void DisplayMenueOptions(List<string> options,string[] colorsForTheConsole)
+        {
+            Console.Clear();
+            for (int i = 0; i < options.Count; i++)
+            {
+                SwitchConsoleColor(colorsForTheConsole[i]);
+                Console.WriteLine(options[i]);
+            }
+            Console.ResetColor();
+        }
 
-      
+        private static void DisplayImageBelowOptions(string imageAscii)
+        {
+            Console.WriteLine(imageAscii);
+        }
+        
+        private static void SelecteOption(List<string> options)
+        {
+            int currentPositon = 0;
+
+        }
+
         private static void TestingTheFiles()
         {
             StringBuilder sb = new StringBuilder();
@@ -61,10 +84,7 @@ namespace Csharp_Console_Games
             options.Add("Load Game");
             options.Add("Options");
             options.Add("Quit");
-            for(int i =0;i<options.Count;i++)
-            {
-
-            }
+           
             using (var reader = new StreamReader(@"Resources\MainMenueAsciImage.txt"))       //its in resoures folder
             {
                 while(reader.Peek()>=0)
