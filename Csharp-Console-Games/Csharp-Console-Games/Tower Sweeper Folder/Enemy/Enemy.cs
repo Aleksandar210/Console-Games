@@ -321,7 +321,15 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         public void IncreaseHealth(int increaseBy)
         {
-            //chekc for boundries
+            if(this.Health+increaseBy<=800)
+            {
+                if (this.Health <= this.HealthRange / 2 && this.Health + increaseBy > this.HealthRange / 2)
+                {
+                    this.visualSignature = 'E';
+                    this.Health += increaseBy;
+                }
+            }
+           
         }
 
         public void DecreaseDamage(int decreaseBy)
