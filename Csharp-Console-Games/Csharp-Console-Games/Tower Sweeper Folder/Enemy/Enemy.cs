@@ -274,7 +274,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         }
 
-        private void Move(string direction)         //Linked with patrol
+        protected void Move(string direction)         //Linked with patrol
         {
             switch(direction)
             {
@@ -292,7 +292,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             }
         }
 
-        private void Attack()
+        protected void Attack()
         {
             if(this.isAbilityAvailable)
             {
@@ -304,17 +304,17 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             }
         }
 
-        private void ScanArrea(string direction)
+        protected void ScanArrea(string direction)
         {
 
         }
 
-        private void ChasePlayer()
+        protected void ChasePlayer()
         {
 
         }
 
-        private void UseAbility()
+        protected void UseAbility()
         {
 
         }
