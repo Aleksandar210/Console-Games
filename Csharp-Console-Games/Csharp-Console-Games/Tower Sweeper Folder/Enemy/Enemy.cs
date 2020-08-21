@@ -248,7 +248,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         public int Damage => this.overallDamage;
         
 
-        private int[] CurrentAvailableAbilites { set; get; }
+        private int[] CurrentAvailableAbilites { set; get; }        //cant remember why I used this 
         
 
         //Behaviour
