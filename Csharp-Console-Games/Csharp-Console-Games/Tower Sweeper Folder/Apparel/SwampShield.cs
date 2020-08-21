@@ -35,18 +35,19 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
         }
 
 
-        //on every 3 stacks the shield fixes 5 % of its armour
+        //on every 3 stacks the shield fixes 5% from the hit value     (the % / 100 * the number value -> formula)
         protected override void EffectOnHit()
         {
             this.rootStacks++;
             if (this.rootStacks%3==0 && this.isPlayerOwner)
             {
-                
+                this.FixShield((5 / 100) * this.lastDamageReceived);
                 return;
             }
             else if (this.rootStacks%3==0 && !this.isPlayerOwner)
             {
-                
+                this.FixShield((5 / 100) * this.lastDamageReceived);
+                return;
             }
         }
     }

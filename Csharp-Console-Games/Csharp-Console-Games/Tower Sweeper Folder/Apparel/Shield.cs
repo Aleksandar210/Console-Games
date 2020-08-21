@@ -17,7 +17,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
         protected int armourRange;
         protected int currentArmourValue;
         protected bool isShieldDestroyed;
-
+        protected int lastDamageReceived;
         //constructors
 
         public Shield(string name,int armour)
@@ -79,6 +79,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
         //behaviour
         public void Hit(int damageReceived)
         {
+            this.lastDamageReceived = damageReceived;
             this.EffectOnHit();
             if(this.currentArmourValue-damageReceived<=0)
             {
