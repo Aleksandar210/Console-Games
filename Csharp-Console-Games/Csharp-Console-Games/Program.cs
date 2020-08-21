@@ -68,11 +68,13 @@ namespace Csharp_Console_Games
         {
             Console.WriteLine(imageAscii);
         }
-        
-        private static void SelecteOption(List<string> options)
+
+        private static void SelecteOption(List<string> options,string[] colors,string imageAsii)
         {
             int currentPositon = 0;
+            int previousPositon = 0;
             string selectedOption = null;
+            options[currentPositon] = "|" + options[currentPositon] + "|";
             ConsoleKey ch;
             do
             {
@@ -81,13 +83,27 @@ namespace Csharp_Console_Games
                 {
                     
                     case ConsoleKey.UpArrow:
-                        
+                        if(currentPositon-1>=0)
+                        {
+                            currentPositon -= 1;
+                            previousPositon += 1;
+                            options[previousPositon] = options[previousPositon].Trim(new char[] { '|' });
+                            options[currentPositon] = "|" + options[currentPositon] + "|";
+                            DisplayMenueOptions(options, colors);
+                            DisplayImageBelowOptions();
+                        }
                         break;
                     case ConsoleKey.DownArrow:
-                       
+                        if (currentPositon + 1 <=3)
+                        {
+                            currentPositon += 1;
+                            previousPositon -= 1;
+                            options[previousPositon] = options[previousPositon].Trim(new char[] { '|' });
+                            options[currentPositon] = "|" + options[currentPositon] + "|";
+                        }
                         break;
                     case ConsoleKey.Enter:
-
+                        selectedOption = options[currentPositon].Trim(new char[] { '|'});
                         break;
 
                 }
@@ -95,34 +111,12 @@ namespace Csharp_Console_Games
             }
             while (selectedOption is null);
 
+            Console.Clear();
+            Console.WriteLine("YOU HAVE SELETED THE {0}", selectedOption);
         }
 
 
-        private void MoveArrowKeys()
-        {
-
-            var ch = Console.ReadKey(false).Key;
-            switch (ch)
-            {
-                case ConsoleKey.LeftArrow:
-                    this.player.Move("left");
-                    return;
-                case ConsoleKey.UpArrow:
-                    this.player.Move("forward");
-                    break;
-                case ConsoleKey.DownArrow:
-                    this.player.Move("backward");
-                    break;
-                case ConsoleKey.RightArrow:
-                    this.player.Move("right");
-                    break;
-
-                default:
-
-                    break;
-            }
-
-        }
+       
 
         private static void TestingTheFiles()
         {
