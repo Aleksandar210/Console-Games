@@ -22,12 +22,14 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
         private LionShield():base(LionShieldName, LionShieldArmourValue)
         {
             this.roarStacks = RoarStacksDefault;
+            this.enemy = enemy;
             
         }
 
         public LionShield(Player player):this()
         {
             this.isPlayerOwner = true;
+            this.player = player;
         }
 
         public LionShield(Enemy enemy):this()

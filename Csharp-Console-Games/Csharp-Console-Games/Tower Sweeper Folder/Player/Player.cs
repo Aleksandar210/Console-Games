@@ -36,7 +36,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         private Weapon rightHandWeapon;
         private char[][] playerEnvironement;
         private bool hasApparel;
-
+        protected int clearedTowers;
      
         //constructors
         public Player(string name,int mana,int health):this(name)
@@ -177,6 +177,8 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         }
 
         public char[][] PlayerEnvironment => this.playerEnvironement;
+
+        public int ClearedTowers => this.clearedTowers;
        
         //behaviour
 
