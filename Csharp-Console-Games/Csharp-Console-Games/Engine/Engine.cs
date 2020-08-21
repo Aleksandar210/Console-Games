@@ -169,6 +169,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
             int[] tempEnemyCoordiantes;
             string[] tempEnemyStatsArray;
+            Enemy currentEenemy = null;     //this will be used to add  to the collection as we wil create random types of enemies ihereting
             foreach(var item in this.enemiesCoordiantes)       
             {
                 tempEnemyCoordiantes = item.Split(" ", StringSplitOptions.RemoveEmptyEntries)
