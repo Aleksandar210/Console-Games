@@ -160,6 +160,10 @@ namespace Csharp_Console_Games
             //List<Player> currentPlayersFromFile = new List<Player>();
 
             List<string> currentArenaOptions = new List<string>();
+            currentArenaOptions.Add("One ~vs~ One");
+            currentArenaOptions.Add("Wave of enemies");
+            currentArenaOptions.Add("Select Heroe");
+            currentArenaOptions.Add("Quit");
 
             //this will be sued as an experiment with a test file for the heroes
             //this basically fills the List with the data needed
