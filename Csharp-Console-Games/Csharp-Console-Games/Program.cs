@@ -18,7 +18,7 @@ namespace Csharp_Console_Games
             // TowerSweaper();
           
             
-            TestingTheFiles();
+            TestingTheMainMenue();
             //TestingTheFiles();
             //experiment with random numbers
             // Console.Write("Enter min range: ");
@@ -123,13 +123,13 @@ namespace Csharp_Console_Games
             while (selectedOption is null);
 
             Console.Clear();
-            Console.WriteLine("YOU HAVE SELETED THE {0}", selectedOption);
+            Console.WriteLine("YOU HAVE SELECTED THE {0}", selectedOption);
         }
 
 
        
 
-        private static void TestingTheFiles()
+        private static void TestingTheMainMenue()
         {
             StringBuilder sb = new StringBuilder();
             string[] colorsForTheConsole = new string[] { "Green", "LightBlue", "DarkYellow", "Red" };
@@ -153,7 +153,18 @@ namespace Csharp_Console_Games
 
         }
         
+        private static void TestingTheSelectCurrentHero()
+        {
+            List<Player> currentPlayersFromFile = new List<Player>();
+            using (var reader = new StreamReader(@"Resources\MainMenueAsciImage.txt"))       //its in resoures folder
+            {
+                while (reader.Peek() >= 0)
+                {
+                   
+                }
+            }
 
+        }
       
 
         //WORKS

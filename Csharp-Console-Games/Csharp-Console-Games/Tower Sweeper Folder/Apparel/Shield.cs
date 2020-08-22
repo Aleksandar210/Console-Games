@@ -107,5 +107,11 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Apparel
 
         protected abstract void EffectOnHit();  //this executes some action from class ShieldEffects
 
+        public override string ToString()
+        {
+            string shieldData = "Shield: " + this.Name + "|" + $" {this.ArmourValue}/{this.ArmourRange}";
+            return shieldData;
+        }
+
     }
 }

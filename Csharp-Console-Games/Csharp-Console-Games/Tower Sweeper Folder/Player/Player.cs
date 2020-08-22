@@ -11,6 +11,10 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 {
     public class Player
     {
+
+        //resources
+        StringBuilder sb;
+
         //related to movement
         private char drawAfterPlayer;           //the symbol behind us when we moved
         private int[] coordinatesDrawAfter;     //where to draw the symbol after the step
@@ -43,6 +47,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         {
             this.ManaRange = mana;
             this.HealthRange = health;
+            this.sb = new StringBuilder();
 
         }
 
@@ -377,5 +382,19 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             this.playerEnvironement = currentSurroundings;
         }
 
+        public override string ToString()
+        {
+            this.sb.Clear();
+            this.sb.Append("|" + this.Name + "|");
+            this.sb.Append(@"Health: {0}/{1}", this.Health, this.HealthRange);
+            this.sb.Append(@"Mana: {0}/{1}", this.Mana, this.ManaRange);
+            if (this.hasApparel)
+            {
+                this.sb.Append(this.currentShield);
+            }
+            
+            
+            return sb.ToString();
+        }
     }
 }
