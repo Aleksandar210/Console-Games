@@ -385,12 +385,24 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         public override string ToString()
         {
             this.sb.Clear();
-            this.sb.Append("|" + this.Name + "|");
-            this.sb.Append(@"Health: {0}/{1}", this.Health, this.HealthRange);
-            this.sb.Append(@"Mana: {0}/{1}", this.Mana, this.ManaRange);
+            this.sb.Append("|" + this.Name + "|"+Environment.NewLine);
+            this.sb.Append($"Health: {this.Health}/{this.HealthRange}"+Environment.NewLine);
+            this.sb.Append($"Mana: {this.Mana}/{this.ManaRange}"+Environment.NewLine);
             if (this.hasApparel)
             {
-                this.sb.Append(this.currentShield);
+                this.sb.Append(this.currentShield+Environment.NewLine);
+            }
+            if (this.items.Count > 0)
+            {
+                sb.Append($"{this.items.Count}-Items"+Environment.NewLine);
+                for(int i =0;i<this.items.Count;i++)
+                {
+
+                }
+            }
+            else
+            {
+                this.sb.Append("No Items currently." + Environment.NewLine);
             }
             
             
