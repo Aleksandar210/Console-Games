@@ -440,5 +440,11 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             
             return sb.ToString();
         }
+
+        public string GetSaveData()     //this puts the data of the player to a save file if needed
+        {
+
+            return null;
+        }
     }
 }
