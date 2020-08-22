@@ -18,7 +18,7 @@ namespace Csharp_Console_Games
 
             //Related to GAME
             //----------------------
-             TowerSweaper();
+            // TowerSweaper(); //has bug minValue greater than maxValue find it
 
             //TestingTheSelectCurrentHero();
             //TestingTheMainMenue();
