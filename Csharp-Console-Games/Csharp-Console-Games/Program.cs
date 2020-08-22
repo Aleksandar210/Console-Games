@@ -15,10 +15,15 @@ namespace Csharp_Console_Games
     {
         static void Main(string[] args)
         {
-            // TowerSweaper();
-          
-            
-            TestingTheMainMenue();
+
+            //Related to GAME
+            //----------------------
+             TowerSweaper();
+
+            //TestingTheSelectCurrentHero();
+            //TestingTheMainMenue();
+            //-------------------
+
             //TestingTheFiles();
             //experiment with random numbers
             // Console.Write("Enter min range: ");
@@ -157,7 +162,7 @@ namespace Csharp_Console_Games
         {
             Player currrentPlayerSelected = null;
             StringBuilder sb = new StringBuilder();
-            //List<Player> currentPlayersFromFile = new List<Player>();
+            //List<Player> currentPlayersFromFile = new List<Player>(); 
 
             List<string> currentArenaOptions = new List<string>();
             currentArenaOptions.Add("One ~vs~ One");
@@ -165,12 +170,14 @@ namespace Csharp_Console_Games
             currentArenaOptions.Add("Select Heroe");
             currentArenaOptions.Add("Quit");
 
+            string[] colorsForTheConsole = new string[] { "Green", "LightBlue", "DarkYellow", "Red" };
+
             //this will be sued as an experiment with a test file for the heroes
             //this basically fills the List with the data needed
             //using (var readHeroes = new StreamReader(@"Resources\TestHeroes.txt"))
-           // {
-            
-           // }
+            // {
+
+            // }
             //tohis reads the image and saves it to a string
             using (var reader = new StreamReader(@"Resources\ArenaAscii.txt"))       //its in resoures folder
             {
@@ -180,6 +187,10 @@ namespace Csharp_Console_Games
                 }
             }
             string image = sb.ToString();
+
+            DisplayMenueOptions(currentArenaOptions,colorsForTheConsole );
+            DisplayImageBelowOptions(image);
+            SelecteOption(currentArenaOptions, colorsForTheConsole, image);
 
         }
 

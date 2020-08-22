@@ -15,7 +15,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Items
        
 
         //constructors
-        public HolyCrossGrenade()
+        public HolyCrossGrenade():base()
         {
             this.name = DefautName;
             //this.isD
@@ -30,7 +30,27 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Items
 
 
         //implement effect here
-        protected override void Effect()
+        public override void Effect()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void IncreaseHealthRange()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void HealUser()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void RestoreShieldArmour()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void IncreaseDamage()
         {
             throw new NotImplementedException();
         }

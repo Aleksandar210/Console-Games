@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Update="Resources\ArenaAscii.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\EnemiesNamesStats.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
