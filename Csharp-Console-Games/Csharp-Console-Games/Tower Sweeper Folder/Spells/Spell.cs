@@ -36,5 +36,16 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
             get { return this.manaCost; }
         }
+
+
+        public string Name
+        {
+            private set
+            {
+
+            }
+
+            get { return this.name; }
+        }
     }
 }

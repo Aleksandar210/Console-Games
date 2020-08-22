@@ -422,7 +422,20 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             {
                 this.sb.Append("No Items currently." + Environment.NewLine);
             }
-            
+
+            if(this.rightHandWeapon is null)
+            {
+                this.sb.Append("No weapon in hand"+Environment.NewLine);
+            }
+            else
+            {
+                this.sb.Append(this.rightHandWeapon + Environment.NewLine);
+            }
+            this.sb.Append("Spells:");
+            foreach(var item in this.spells)
+            {
+                this.sb.Append(" " + item.Name);
+            }
             
             return sb.ToString();
         }
