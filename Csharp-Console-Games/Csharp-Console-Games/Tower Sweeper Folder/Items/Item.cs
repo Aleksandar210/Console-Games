@@ -62,9 +62,9 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         //properties
 
-        protected string Name
+        public string Name
         {
-             set
+            private set
             {
                 if (String.IsNullOrEmpty(value) || String.IsNullOrWhiteSpace(value))
                 {
@@ -78,9 +78,9 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             get { return this.name; }
         }
 
-        protected int ManaCost
+        public int ManaCost
         {
-            set
+           private set
            {
                 if(value<0 || value>700)
                 {
@@ -94,9 +94,9 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             get { return this.manaCost; }
         }
 
-        protected int Damage
+        public  int Damage
         {
-             set
+           private set
             {
                 if(value<=0 || value>=800)
                 {
@@ -110,9 +110,9 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             get { return this.damage; }
         }
 
-        protected int HealthRestore
+        public int HealthRestore
         {
-             set
+           private  set
             {
                 if(value<=0)
                 {

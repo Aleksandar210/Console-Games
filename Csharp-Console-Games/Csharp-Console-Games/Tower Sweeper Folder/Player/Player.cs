@@ -397,7 +397,11 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                 sb.Append($"{this.items.Count}-Items"+Environment.NewLine);
                 for(int i =0;i<this.items.Count;i++)
                 {
-
+                    if (i % 5 == 0)
+                    {
+                        this.sb.Append(Environment.NewLine);
+                    }
+                    this.sb.Append(this.items[i] + " ");
                 }
             }
             else
