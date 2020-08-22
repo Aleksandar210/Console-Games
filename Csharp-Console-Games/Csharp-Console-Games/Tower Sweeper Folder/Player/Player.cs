@@ -443,8 +443,9 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         public string GetSaveData()     //this puts the data of the player to a save file if needed
         {
-
-            return null;
+            //name currentMana,currentHealth,Shield,Weapon
+            return $"{1},{2},{3},{4},{5}";      //finish this by implementing return save data for shield and weapon
+            
         }
     }
 }
