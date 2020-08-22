@@ -155,14 +155,24 @@ namespace Csharp_Console_Games
         
         private static void TestingTheSelectCurrentHero()
         {
+            Player currrentPlayerSelected = null;
+            StringBuilder sb = new StringBuilder();
             List<Player> currentPlayersFromFile = new List<Player>();
-            using (var reader = new StreamReader(@"Resources\MainMenueAsciImage.txt"))       //its in resoures folder
+
+            //this will be sued as an experiment with a test file for the heroes
+            using (var readHeroes = new StreamReader())
+            {
+
+            }
+            //tohis reads the image and saves it to a string
+            using (var reader = new StreamReader(@"Resources\ArenaAscii.txt"))       //its in resoures folder
             {
                 while (reader.Peek() >= 0)
                 {
-                   
+                    sb.Append(reader.ReadLine() + Environment.NewLine);
                 }
             }
+            string image = sb.ToString();
 
         }
       

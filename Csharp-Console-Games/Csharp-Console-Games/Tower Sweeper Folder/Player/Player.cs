@@ -25,6 +25,8 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
         private const int DefaultManaPoints = 150;    //on startup
         private const int StartingPositionRowNewGame = 19;
         private const int StartingPositionColNewGame = 35;
+        private const int StartingPositoonRowOnRoom = 0;    //on each room spawn
+        private const int StartingPositonColRoom = 0;       //on each room spawn
 
         // fields
         private string name;
@@ -51,14 +53,21 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
         }
 
-        public Player(string name) : this()
+        public Player(string name,int currentMana,int currentHealth,Shield currentShield,Weapon currentWeapon)     //this will be used for loading the files
+        {
+
+        }
+
+        private Player(string name) : this()
         {
             this.Name = name;
             this.positonOnField = new int[2] { StartingPositionRowNewGame, StartingPositionColNewGame };
             
         }
 
-        public Player()
+
+
+        private Player()
         {
             this.drawAfterPlayer = '.';
             this.coordinatesDrawAfter = new int[2] { this.positonOnField[0],this.positonOnField[1]};
@@ -294,6 +303,11 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                     }
                     break;
             }
+        }
+
+        public void SetCurrentPositonOnRoomSpawn()
+        {
+           
         }
 
         public void Attack()        //bind key
