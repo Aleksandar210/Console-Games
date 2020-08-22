@@ -8,12 +8,15 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Weapons
     {
         //resource
         protected Random rand;
+        private StringBuilder sb;
 
         //fields
         protected int damage;
         protected readonly int durabilityRange;       //this is the constant range
         protected int currentDurabilityValue;       //this is changable
-        protected string name;                      
+        protected string name;
+        protected string type;      //optional or not implemented for now will do in future time
+
 
         //costructs
         public Weapon(string name,int damage, int durability):this()
@@ -26,6 +29,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Weapons
         private Weapon()
         {
             this.rand = new Random();
+            this.sb = new StringBuilder();
         }
 
         //properties
@@ -95,6 +99,11 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder.Weapons
             {
                 this.currentDurabilityValue = this.DurabilityRange;
             }
+        }
+
+        public override string ToString()
+        {
+            this.sb.Append("Name: "+this.Name+"| ")
         }
     }
 }

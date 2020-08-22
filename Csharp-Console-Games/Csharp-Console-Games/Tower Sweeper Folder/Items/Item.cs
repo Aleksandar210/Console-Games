@@ -196,8 +196,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
        
         public override string ToString()
         {
-            this.sb.Append($"{this.Name}");
-            return sb.ToString();
+            return this.Name;
         }
     }
 }
