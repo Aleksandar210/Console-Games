@@ -1,1 +1,2 @@
-﻿I thikn it will store all the info on one line about the hero 
+﻿afafa,200,300,HoundShield,40,Ice Katana,sword,30,60
+ehhh,111,222,Broken Shield,50,Ice Katana,sword,30,60

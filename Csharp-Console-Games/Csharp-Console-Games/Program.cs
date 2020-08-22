@@ -160,9 +160,10 @@ namespace Csharp_Console_Games
             List<Player> currentPlayersFromFile = new List<Player>();
 
             //this will be sued as an experiment with a test file for the heroes
-            using (var readHeroes = new StreamReader())
+            //this basically fills the List with the data needed
+            using (var readHeroes = new StreamReader(@"Resources\TestHeroes.txt"))
             {
-
+            
             }
             //tohis reads the image and saves it to a string
             using (var reader = new StreamReader(@"Resources\ArenaAscii.txt"))       //its in resoures folder
@@ -174,6 +175,13 @@ namespace Csharp_Console_Games
             }
             string image = sb.ToString();
 
+        }
+
+        private static Player SelectThePlayer(List<Player> currentPlayers,string[] )
+        {
+
+
+            return null;
         }
       
 

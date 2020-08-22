@@ -350,6 +350,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
                             this.currentShield = desiredShield;
                             break;
                         case 2:
+                            //implement cancel it is a joke it does nothing basically
                             break;
                         case 3:
                            //implement bag
