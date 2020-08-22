@@ -50,7 +50,7 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
            
         }
 
-        protected Item(string name,string[] type,params int[] damageHealthShieldBuff):this(name,type)
+        protected Item(string name,string[] type,params int[] damageHealthShieldBuff):this(name,type)   //finish this
         {
             switch(damageHealthShieldBuff.Length)
             {
@@ -78,9 +78,9 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             get { return this.name; }
         }
 
-        public int ManaCost
+        protected int ManaCost
         {
-           private set
+            set
            {
                 if(value<0 || value>700)
                 {
@@ -94,9 +94,9 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             get { return this.manaCost; }
         }
 
-        public  int Damage
+        protected  int Damage
         {
-           private set
+            set
             {
                 if(value<=0 || value>=800)
                 {
@@ -110,9 +110,9 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             get { return this.damage; }
         }
 
-        public int HealthRestore        //
+        protected int HealthRestore        //there has to be a better way ?
         {
-           private  set
+             set
             {
                 if(value<0)
                 {
@@ -161,9 +161,19 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
 
 
         //behaviour
-        protected abstract void Effect();
-        protected abstract int CriticalDamageIncrease();
-        
+        //items have their own damage as well it depends on the item
+
+        public abstract void Effect();   
+        protected abstract int CriticalDamageIncrease();    //depends on item
+
+        protected abstract void IncreaseHealthRange();       //depends on item
+
+        protected abstract void HealUser();     //depends on item
+
+        protected abstract void RestoreShieldArmour();  //depends on item
+
+        protected abstract void IncreaseDamage();       //depedns on item
+
         private void DeterminType(string[] types) // by including types we can sort them in the shop.
         {
             foreach(var item in types)
