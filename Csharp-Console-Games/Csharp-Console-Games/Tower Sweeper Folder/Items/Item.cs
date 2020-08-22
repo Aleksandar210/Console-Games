@@ -110,11 +110,11 @@ namespace Csharp_Console_Games.Tower_Sweeper_Folder
             get { return this.damage; }
         }
 
-        public int HealthRestore
+        public int HealthRestore        //
         {
            private  set
             {
-                if(value<=0)
+                if(value<0)
                 {
                     throw new ArgumentException("Invalid Health Restore.");
                 }
