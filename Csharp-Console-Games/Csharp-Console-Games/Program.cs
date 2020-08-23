@@ -1,27 +1,31 @@
 ﻿using Csharp_Console_Games.Tower_Sweeper_Folder;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Runtime.CompilerServices;
-using System.Runtime.ExceptionServices;
 using System.Text;
 
 namespace Csharp_Console_Games
 {
     class Program
     {
-        static void Main(string[] args)
+      
+
+
+
+    static void Main(string[] args)
         {
 
             //Related to GAME
             //----------------------
             // TowerSweaper(); //has bug minValue greater than maxValue find it
 
+
+
             //TestingTheSelectCurrentHero();
-            //TestingTheMainMenue();
+            //Console.SetWindowSize(Console.LargestWindowWidth,Console.LargestWindowHeight); sets the console to max size
+            
+            TestingTheMainMenue();
             //-------------------
 
             //TestingTheFiles();
@@ -35,10 +39,10 @@ namespace Csharp_Console_Games
             //    Console.WriteLine(GenerateRandomNumber(1, max));
             // }
 
-
-
             
         }
+
+
 
         private static void SwitchConsoleColor(string colorName)
         {
@@ -121,6 +125,9 @@ namespace Csharp_Console_Games
                     case ConsoleKey.Enter:
                         selectedOption = options[currentPositon].Trim(new char[] { '|'});
                         break;
+                    case ConsoleKey.Escape:
+                        TestingTheMainMenue();
+                        break;
 
                 }
 
@@ -128,7 +135,12 @@ namespace Csharp_Console_Games
             while (selectedOption is null);
 
             Console.Clear();
-            Console.WriteLine("YOU HAVE SELECTED THE {0}", selectedOption);
+           switch(selectedOption)
+            {
+                case "Arena":
+                    TestingTheSelectCurrentHero();
+                    break;
+            }
         }
 
 
@@ -140,7 +152,7 @@ namespace Csharp_Console_Games
             string[] colorsForTheConsole = new string[] { "Green", "LightBlue", "DarkYellow", "Red" };
             List<string> options = new List<string>();
             options.Add("New Game");
-            options.Add("Load Game");
+            options.Add("Arena");
             options.Add("Options");
             options.Add("Quit");
            
